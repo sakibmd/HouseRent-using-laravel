@@ -1,0 +1,26 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+.navbar ul li a{
+	font-size: 17px;
+	color: white! important;
+	font-weight: bold;
+  }
+  .navbar ul li a:hover{
+	color: grey! important;
+  }
+
+ 
+.name{
+	font-family: 'Grandstander', cursive;
+    padding: 15px 0px 5px 0px;
+    font-size: 45px;
+}
+
+
+
+
+  
+
