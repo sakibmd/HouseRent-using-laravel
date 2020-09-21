@@ -66,6 +66,7 @@ class RegisterController extends Controller
             'contact' => ['required', 'numeric', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role_id' => ['required', 'numeric'],
+            'image' => 'mimes:jpeg,png,jpg',
         ]);
     }
 

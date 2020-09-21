@@ -71,7 +71,7 @@
 					      
 
                             <div class="form-group">
-                                    <button type="submit" class="btn btn-success">Add</button>
+                                    <button type="submit" class="btn btn-success">Update</button>
                                     <a href="{{ URL::previous() }}" class="btn btn-danger wave-effect" >Back</a>
                             </div> 
                   </form>

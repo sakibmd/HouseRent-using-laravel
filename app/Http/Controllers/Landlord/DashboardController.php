@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Landlord;
 
+use App\Area;
+use App\House;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
    public function index(){
-        return view('landlord.dashboard');
+        $renters = User::where('role_id', 3)->get();
+        $houses = House::latest()->get();
+        $areas = Area::latest()->get();
+        return view('landlord.dashboard', compact('renters', 'houses', 'areas'));
     }
 }

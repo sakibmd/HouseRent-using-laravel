@@ -16,7 +16,7 @@
             <div class="table-responsive-md">
                 <table class="table">
                     <tr>
-                        <a href="{{ route('admin.profile.edit', $profile->id) }}" class="btn btn-info float-right my-4" >Edit Profile</a>
+                        <a href="{{ route('landlord.profile.edit', $profile->id) }}" class="btn btn-info float-right my-4" >Edit Profile</a>
                     </tr>
                     <tr>
                         <th>Name</th>

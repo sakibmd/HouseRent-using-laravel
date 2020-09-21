@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Landlord;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\User;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class SettingsController extends Controller
 {
     public function showProfile(){
         $profile = User::where('id', Auth::id())->first();
-        return view('admin.profile.index', compact('profile'));
+        return view('landlord.profile.index', compact('profile'));
     }
 
     public function editProfile(){
         $profile = User::where('id', Auth::id())->first();
-        return view('admin.profile.edit', compact('profile'));
+        return view('landlord.profile.edit', compact('profile'));
     }
 
     public function updateProfile(Request $request){
@@ -68,6 +68,6 @@ class SettingsController extends Controller
         $profile->save();
 
         session()->flash('success', 'Profile Updated Successfully');
-        return redirect(route('admin.profile.show'));
+        return redirect(route('landlord.profile.show'));
     }
 }

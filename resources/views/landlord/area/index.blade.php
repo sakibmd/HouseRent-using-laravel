@@ -33,7 +33,7 @@
                         <tr>
                           <td>{{ $area->name }}</td>
                           <td>{{ $area->created_at->toFormattedDateString() }}</td>
-                          <td>0</td>
+                          <td>{{ $area->houses->count() }}</td>
                           <td>
                             <a href="{{ route('landlord.area.edit', $area->id) }}"  class="btn btn-info">Edit</a>
                             <button class="btn btn-danger" type="button" onclick="deleteArea({{ $area->id }})">

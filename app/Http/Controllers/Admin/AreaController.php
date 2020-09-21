@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Landlord;
+namespace App\Http\Controllers\Admin;
 
 use App\Area;
 use App\House;
@@ -17,7 +17,7 @@ class AreaController extends Controller
     public function index()
     {
         $areas = Area::latest()->paginate(8);
-        return view('landlord.area.index', compact('areas'));
+        return view('admin.area.index', compact('areas'));
     }
 
     /**
@@ -27,7 +27,7 @@ class AreaController extends Controller
      */
     public function create()
     {
-        return view('landlord.area.create');
+        return view('admin.area.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class AreaController extends Controller
         $area = new Area();
         $area->name = $request->name;
         $area->save();
-        return redirect(route('landlord.area.index'))->with('success', 'Area Added successfully');
+        return redirect(route('admin.area.index'))->with('success', 'Area Added successfully');
     }
 
     /**
@@ -56,7 +56,7 @@ class AreaController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -67,7 +67,7 @@ class AreaController extends Controller
      */
     public function edit(Area $area)
     {
-        return view('landlord.area.edit')->with('area', $area);
+        return view('admin.area.edit')->with('area', $area);
     }
 
     /**
@@ -86,7 +86,7 @@ class AreaController extends Controller
         $area->name = $request->name;
         $area->save();
 
-        return redirect(route('landlord.area.index'))->with('success', 'Area Updated Successfully');
+        return redirect(route('admin.area.index'))->with('success', 'Area Updated Successfully');
     }
 
     /**
@@ -102,6 +102,6 @@ class AreaController extends Controller
             return redirect()->back();
         }
         $area->delete();
-        return redirect(route('landlord.area.index'))->with('success', 'Area Removved Successfully');
+        return redirect(route('admin.area.index'))->with('success', 'Area Removved Successfully');
     }
 }

@@ -10,7 +10,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image text-center">
-          <img src="{{asset('backend/img')}}/user2-160x160.jpg" style="height: 150px; width: 150px" class="img-circle elevation-2" alt="User Image">
+          <img src="{{  Auth::user()->image != null ? asset('storage/profile_photo/'. Auth::user()->image) : asset('backend/img/user2-160x160.jpg') }}" style="height: 150px; width: 150px" class="img-circle elevation-2" alt="User Image">
           <br>
           <div style="color: honeydew;line-height: 4px; font-weight: 600" class="text-center mt-3 info">
               <p>Name: {{ Auth::user()->name }}</p>
@@ -34,6 +34,15 @@
             </a>
           </li>
          
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.area.index') }}" class="nav-link {{ Request::is('admin/area*') ? 'active' : '' }}">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <p class="pl-2">Areas</p>
+            </a>
+          </li>
+
+          
           <li class="nav-item has-treeview">
             <a href="{{ route('admin.house.index') }}" class="nav-link {{ Request::is('admin/house*') ? 'active' : '' }}">
               <i class="fa fa-home" aria-hidden="true"></i>
@@ -42,6 +51,9 @@
               </p>
             </a>
           </li>
+
+
+          
 
           <li class="nav-item has-treeview">
             <a href="{{ route('admin.manage.landlord') }}" class="nav-link {{ Request::is('admin/manage-landlord') ? 'active' : '' }}">
@@ -94,6 +106,15 @@
                 <i class="fa fa-home" aria-hidden="true"></i>
                 <p class="pl-2">
                   House
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="{{ route('landlord.profile.show') }}" class="nav-link {{ Request::is('landlord/profile-info') ? 'active' : '' }}">
+                <i class="fas fa-user"></i>
+                <p class="pl-2">
+                  Profile Info
                 </p>
               </a>
             </li>
