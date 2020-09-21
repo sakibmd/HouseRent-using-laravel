@@ -24,10 +24,10 @@
 
                             <div class="form-group">
                                 <label for="area">Area </label>
-                                <select name="area" class="form-control" id="area">
+                                <select name="area_id" class="form-control" id="area_id">
                                     <option value="">select an area</option>
                                     @foreach ($areas as $area)
-                                        <option value="{{ $area->id }}"  {{ old('area') == $area->id ? 'selected' : '' }} >{{ $area->name }}</option>
+                                        <option value="{{ $area->id }}"  {{ old('area_id') == $area->id ? 'selected' : '' }} >{{ $area->name }}</option>
                                     @endforeach
                                 </select>
                               </div>

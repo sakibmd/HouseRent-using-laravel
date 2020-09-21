@@ -20,7 +20,7 @@ class HouseController extends Controller
      */
     public function index()
     {
-        $houses = House::latest()->paginate(8);
+        $houses = House::latest()->where('user_id', Auth::id())->paginate(8);
         return view('landlord.house.index', compact('houses'));
     }
 
@@ -50,7 +50,7 @@ class HouseController extends Controller
     {
         $this->validate($request,[
             'address' => 'required',
-            'area' => 'required',
+            'area_id' => 'required',
             'number_of_room' => 'required|numeric|integer',
             'number_of_toilet' => 'required|numeric|integer',
             'number_of_belcony' => 'required|numeric|integer',
@@ -97,7 +97,7 @@ class HouseController extends Controller
         $house->address = $request->address;
         $house->user_id = Auth::id();
         $house->contact = Auth::user()->contact;
-        $house->area = $request->area;
+        $house->area_id = $request->area_id;
         $house->number_of_toilet = $request->number_of_toilet;
         $house->number_of_room = $request->number_of_room;
         $house->number_of_belcony = $request->number_of_belcony;
@@ -131,6 +131,27 @@ class HouseController extends Controller
         return view('landlord.house.edit', compact('areas', 'house'));
     }
 
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function switch($id)
+    {
+        $house = House::find($id);
+        if($house->status == 1){
+            $house->status = 0;
+        }else{
+            $house->status = 1;
+        }
+        $house->save();
+
+        session()->flash('success', 'House Status Changed Successfully');
+        return redirect()->back();
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -144,7 +165,7 @@ class HouseController extends Controller
         
         $this->validate($request,[
             'address' => 'required',
-            'area' => 'required',
+            'area_id' => 'required',
             'number_of_room' => 'required|numeric|integer',
             'number_of_toilet' => 'required|numeric|integer',
             'number_of_belcony' => 'required|numeric|integer',
@@ -201,7 +222,7 @@ class HouseController extends Controller
         }
 
         $house->address = $request->address;
-        $house->area = $request->area;
+        $house->area_id = $request->area_id;
         $house->number_of_toilet = $request->number_of_toilet;
         $house->number_of_room = $request->number_of_room;
         $house->number_of_belcony = $request->number_of_belcony;

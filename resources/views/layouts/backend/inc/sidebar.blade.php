@@ -34,11 +34,38 @@
             </a>
           </li>
          
-          <li class="nav-item has-treeview active">
-            <a href="" class="nav-link ">
-              <i class="fas fa-border-style"></i>
-              <p class="ml-2">
-                Dashboard
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.house.index') }}" class="nav-link {{ Request::is('admin/house*') ? 'active' : '' }}">
+              <i class="fa fa-home" aria-hidden="true"></i>
+              <p class="pl-2">
+                Houses
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.manage.landlord') }}" class="nav-link {{ Request::is('admin/manage-landlord') ? 'active' : '' }}">
+              <i class="fas fa-laptop-house"></i>
+              <p class="pl-2">
+                Manage Landlords
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.manage.renter') }}" class="nav-link {{ Request::is('admin/manage-renter') ? 'active' : '' }}">
+              <i class="fas fa-users-cog"></i>
+              <p class="pl-2">
+                Manage Renter
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.profile.show') }}" class="nav-link {{ Request::is('admin/profile-info') ? 'active' : '' }}">
+              <i class="fas fa-user"></i>
+              <p class="pl-2">
+                Profile Info
               </p>
             </a>
           </li>
@@ -50,7 +77,6 @@
                 <i class="fas fa-border-style"></i>
                 <p class="pl-2">
                   Dashboard
-                 
                 </p>
               </a>
             </li>

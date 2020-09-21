@@ -13,7 +13,7 @@
                               <h3><strong>House Details</strong></h3>
                           </div>
                           <div>
-                              <a class="btn btn-danger" href="{{ route('landlord.house.index') }}"> Back</a>
+                              <a class="btn btn-danger" href="{{ route('admin.house.index') }}"> Back</a>
                           </div>
                       </div>
                   

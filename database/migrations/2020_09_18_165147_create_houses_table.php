@@ -16,7 +16,7 @@ class CreateHousesTable extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('address');
-            $table->string('area');
+            $table->string('area_id');
             $table->integer('user_id');
             $table->string('contact');
             $table->string('number_of_room');
@@ -25,7 +25,7 @@ class CreateHousesTable extends Migration
             $table->string('rent');
             $table->string('featured_image');
             $table->string('images');
-            $table->string('status')->default('active');
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

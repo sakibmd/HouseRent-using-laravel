@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 @section('title')
-    All Houses
+    Landlords List
 @endsection
 @section('content')
 <div class="container">
@@ -10,49 +10,38 @@
 
                 <div class="card mt-5">
                     <div class="card-header" style="background-color: rgb(61, 20, 20);color:whitesmoke">
-                      <h3 class="card-title float-left"><strong>Your Houses ({{ $houses->count() }})</strong></h3>
-                      
-                    <a href="{{route('landlord.house.create')}}" class="btn btn-success btn-md float-right c-white">Add new <i class="fa fa-plus"></i></a>
+                      <h3 class="card-title float-left"><strong>All Landlords ({{ $landlords->count() }})</strong></h3>
+                
                     </div>
                     <!-- /.card-header -->
-                    @if ($houses->count() > 0)
+                    @if ($landlords->count() > 0)
                     <div class="card-body">
                     <div class="table-responsive">
                       <table id="dataTableId" class="table table-bordered table-striped bg-dark">
                         <thead>
                         <tr>
-                          <th>Address</th>
-                          {{-- <th>Added at</th> --}}
+                          <th>Name</th>
+                          <th>Nid</th>
+                          <th>Username</th>
+                          <th>Email</th>
                           <th>Contact</th>
-                          <th>Number of Rooms </th>
-                          <th>Status</th>
                           <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($houses as $key=>$house)
+                        @foreach ($landlords as $key=>$landlord)
                         <tr>
-                          <td>{{ $house->address }}</td>
-                          {{-- <td>{{ $house->created_at->toFormattedDateString() }}</td> --}}
-                          <td>{{ $house->contact }}</td>
-                          <td>{{ $house->number_of_room }}</td>
+                          <td>{{ $landlord->name }}</td>
+                          <td>{{ $landlord->nid }}</td>
+                          <td>{{ $landlord->username }}</td>
+                          <td>{{ $landlord->email }}</td>
+                          <td>{{ $landlord->contact }}</td>
                           <td>
-                            @if ($house->status == 0)
-                                Available
-                            @else
-                                Not Available
-                            @endif
-                          </td>
-                          <td>
-                             
-                            <a href="{{ route('landlord.house.status', $house->id) }}"  class="btn btn-warning m-2">Switch Status</a>
-                            <a href="{{ route('landlord.house.show', $house->id) }}"  class="btn btn-success m-2">Details</a>
-                            <a href="{{ route('landlord.house.edit', $house->id) }}"  class="btn btn-info m-2">Edit</a>
-                            <button class="btn btn-danger m-2" type="button" onclick="deleteHouse({{ $house->id }})">
-                                Delete
+                            <button class="btn btn-danger m-2" type="button" onclick="deleteLandlord({{ $landlord->id }})">
+                                Remove
                             </button>
             
-                          <form id="delete-form-{{ $house->id }}" action="{{ route('landlord.house.destroy',$house->id) }}" method="POST" style="display: none;">
+                          <form id="delete-form-{{ $landlord->id }}" action="{{ route('admin.remove.landlord',$landlord->id) }}" method="POST" style="display: none;">
                               @csrf
                               @method('DELETE')
                               
@@ -70,7 +59,7 @@
               @endif
 
                <div class="pagination">
-                  {{ $houses->links() }}
+                  {{ $landlords->links() }}
                 </div>
                    
             </div>
@@ -83,7 +72,7 @@
  @section('scripts')
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
  <script type="text/javascript">
- function deleteHouse(id){
+ function deleteLandlord(id){
      const swalWithBootstrapButtons = Swal.mixin({
           customClass: {
           confirmButton: 'btn btn-success',
@@ -93,7 +82,7 @@
       })
       
       swalWithBootstrapButtons.fire({
-          title: 'Are you sure to remove this house?',
+          title: 'Are you sure to remove this user?',
           type: 'warning',
           showCancelButton: true,
           confirmButtonText: 'Yes, remove it!',

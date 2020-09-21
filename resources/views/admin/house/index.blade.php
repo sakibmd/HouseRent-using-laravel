@@ -44,15 +44,12 @@
                             @endif
                           </td>
                           <td>
-                             
-                            <a href="{{ route('landlord.house.status', $house->id) }}"  class="btn btn-warning m-2">Switch Status</a>
-                            <a href="{{ route('landlord.house.show', $house->id) }}"  class="btn btn-success m-2">Details</a>
-                            <a href="{{ route('landlord.house.edit', $house->id) }}"  class="btn btn-info m-2">Edit</a>
+                            <a href="{{ route('admin.house.show', $house->id) }}"  class="btn btn-success m-2">Details</a>
                             <button class="btn btn-danger m-2" type="button" onclick="deleteHouse({{ $house->id }})">
                                 Delete
                             </button>
             
-                          <form id="delete-form-{{ $house->id }}" action="{{ route('landlord.house.destroy',$house->id) }}" method="POST" style="display: none;">
+                          <form id="delete-form-{{ $house->id }}" action="{{ route('admin.house.destroy',$house->id) }}" method="POST" style="display: none;">
                               @csrf
                               @method('DELETE')
                               
