@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', 'HomeController@index')->name('welcome');
+Route::get('/houses/details/{id}', 'HomeController@details')->name('house.details');
+Route::get('/all-available/houses', 'HomeController@allHouses')->name('house.all');
 
 
 

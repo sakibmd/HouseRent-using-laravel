@@ -34,7 +34,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 welcome text-center my-4">
-            <h1 class="name">Welcome to Admin Panel - <span style="padding: 6px;color:white;background:grey;"> {{ Auth::user()->name }}</span></h1>  
+            <h1 class="name">Welcome to Landlord Panel - <span style="padding: 6px;color:white;background:grey;"> {{ Auth::user()->name }}</span></h1>  
         </div>
     </div>
     <div class="row text-center boxs">

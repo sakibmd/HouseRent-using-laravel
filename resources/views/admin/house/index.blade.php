@@ -10,7 +10,7 @@
 
                 <div class="card mt-5">
                     <div class="card-header" style="background-color: rgb(61, 20, 20);color:whitesmoke">
-                      <h3 class="card-title float-left"><strong>Your Houses ({{ $houses->count() }})</strong></h3>
+                      <h3 class="card-title float-left"><strong>All Houses ({{ $houses->count() }})</strong></h3>
                       
                     </div>
                     <!-- /.card-header -->
@@ -36,7 +36,7 @@
                           <td>{{ $house->contact }}</td>
                           <td>{{ $house->number_of_room }}</td>
                           <td>
-                            @if ($house->status == 0)
+                            @if ($house->status == 1)
                                 Available
                             @else
                                 Not Available

@@ -37,7 +37,7 @@
                           <td>{{ $house->contact }}</td>
                           <td>{{ $house->number_of_room }}</td>
                           <td>
-                            @if ($house->status == 0)
+                            @if ($house->status == 1)
                                 Available
                             @else
                                 Not Available

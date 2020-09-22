@@ -61,7 +61,7 @@
                                 <tr>
                                     <th>Status</th>
                                     <td>
-                                        @if ($house->status == 0)
+                                        @if ($house->status == 1)
                                             <span class="btn btn-success">Available</span>
                                         @else
                                             <span class="btn btn-danger">Not Available</span>

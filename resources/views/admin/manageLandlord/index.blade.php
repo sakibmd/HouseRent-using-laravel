@@ -23,6 +23,7 @@
                           <th>Name</th>
                           <th>Nid</th>
                           <th>Username</th>
+                          <th>Houses</th>
                           <th>Email</th>
                           <th>Contact</th>
                           <th>Action</th>
@@ -34,6 +35,7 @@
                           <td>{{ $landlord->name }}</td>
                           <td>{{ $landlord->nid }}</td>
                           <td>{{ $landlord->username }}</td>
+                          <td>{{ $landlord->houses->count() }}</td>
                           <td>{{ $landlord->email }}</td>
                           <td>{{ $landlord->contact }}</td>
                           <td>

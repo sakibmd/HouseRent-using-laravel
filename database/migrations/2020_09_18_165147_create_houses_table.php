@@ -25,7 +25,7 @@ class CreateHousesTable extends Migration
             $table->string('rent');
             $table->string('featured_image');
             $table->string('images');
-            $table->string('status')->default(0);
+            $table->string('status')->default(1);  //1 means available
             $table->timestamps();
         });
     }

@@ -22,7 +22,7 @@
                     <div>
                         {{-- <img src="{{ asset('backend/img/real-estate-estate-agent-property-management-house-realstate.jpg') }}" style="height: 80px; width: 80px" alt="" class="my-2 text-center"> --}}
                         <strong class="name">House Rental</strong>
-                        <div class="mb-3" id="time"></div>
+                        <div class="mb-3" style="margin-left: 12px;" id="time"></div>
                     </div>
                    
                 </div>
@@ -42,7 +42,7 @@
                   <a class="nav-link" href="{{ route('welcome') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="">All Houses</a>
+                  <a class="nav-link" href="{{ route('house.all') }}">All Availabel Houses</a>
                 </li>
                
 

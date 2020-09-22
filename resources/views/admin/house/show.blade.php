@@ -61,7 +61,7 @@
                                 <tr>
                                     <th>Status</th>
                                     <td>
-                                        @if ($house->status == 0)
+                                        @if ($house->status == 1)
                                             <span class="btn btn-success">Available</span>
                                         @else
                                             <span class="btn btn-danger">Not Available</span>
@@ -75,7 +75,8 @@
                             @foreach (json_decode($house->images) as $picture)
                                        <div class="col-md-3">
                                            <a href="{{ asset('images/'.$picture) }}">
-                                                       <img  src="{{ asset('images/'.$picture) }}" class="img-fluid m-2" style="height: 150px;width: 100%; ">
+                                                       <img  src="{{ asset('images/'.$picture) }}" class="img-fluid m-2"
+                                                        style="height: 150px;width: 100%; ">
                                            </a>
                                        </div>
                             @endforeach

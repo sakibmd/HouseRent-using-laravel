@@ -61,6 +61,12 @@ class HouseController extends Controller
     public function removeLandlord($id){
         $user = User::findOrFail($id);
 
+        if($user->houses->count() > 0){
+            session()->flash('danger', 'You do not remove landlord right now. Because he have some houses. At first 
+            you have to remove houses, then remove him');
+            return redirect()->back();
+        }
+
         House::where('user_id', $user->id)->delete();
 
         $user->delete();

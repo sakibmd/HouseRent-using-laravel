@@ -38,7 +38,7 @@
 <script>
   setTimeout(function() {
       $('#alert').fadeOut('fast');
-  }, 6000);
+  }, 8000);
 </script>
 
 @yield('scripts')
