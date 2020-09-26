@@ -10,7 +10,7 @@
 
                 <div class="card mt-5">
                     <div class="card-header" style="background-color: rgb(61, 20, 20);color:whitesmoke">
-                      <h3 class="card-title float-left"><strong>Your Houses ({{ $houses->count() }})</strong></h3>
+                      <h3 class="card-title float-left"><strong>Your Houses ({{ $housecount }})</strong></h3>
                       
                     <a href="{{route('landlord.house.create')}}" class="btn btn-success btn-md float-right c-white">Add new <i class="fa fa-plus"></i></a>
                     </div>

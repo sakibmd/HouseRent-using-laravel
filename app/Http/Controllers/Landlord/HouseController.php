@@ -21,7 +21,8 @@ class HouseController extends Controller
     public function index()
     {
         $houses = House::latest()->where('user_id', Auth::id())->paginate(8);
-        return view('landlord.house.index', compact('houses'));
+        $housecount = House::all()->count();
+        return view('landlord.house.index', compact('houses', 'housecount'));
     }
 
     /**
@@ -256,3 +257,6 @@ class HouseController extends Controller
         return redirect(route('landlord.house.index'))->with('success', 'House Removed Successfully');
     }
 }
+
+
+

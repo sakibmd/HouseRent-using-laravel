@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $houses = House::where('status', 1)->latest()->take(6)->get();
+        $houses = House::where('status', 1)->latest()->paginate(6);
         $areas = Area::all();
         return view('welcome', compact('houses', 'areas'));
     }

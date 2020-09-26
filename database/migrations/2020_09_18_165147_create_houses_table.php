@@ -24,7 +24,7 @@ class CreateHousesTable extends Migration
             $table->string('number_of_belcony');
             $table->string('rent');
             $table->string('featured_image');
-            $table->string('images');
+            $table->text('images');
             $table->string('status')->default(1);  //1 means available
             $table->timestamps();
         });

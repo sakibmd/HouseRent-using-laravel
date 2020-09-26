@@ -52,7 +52,7 @@
                                     <div class="card-body">
                                         <p>Area: {{ $house->area->name }}</p>
                                         <p>Address: {{ $house->address }}</p>
-                                        <p>Contact:  + 88 {{ $house->contact }}</p>
+                                        <p>Rent: {{ $house->rent }}</p>
                                         <a href="{{ route('house.details', $house->id) }}" class="btn btn-info">Details</a>
                                     </div>
                                 </div>
@@ -61,6 +61,11 @@
                             <h2 class="m-auto py-2 text-white bg-dark p-3">House Not Available right now</h2>
                         @endforelse
                    </div>
+                   
+                   <div class="panel-heading my-4" style="display:flex; justify-content:center;align-items:center;">
+                        {{ $houses->links() }}
+                    </div>
+                   
             </div>
             <div class="col-md-3">
                     <ul class="list-group sort">

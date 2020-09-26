@@ -18,7 +18,8 @@ class HouseController extends Controller
     public function index()
     {
         $houses = House::latest()->paginate(8);
-        return view('admin.house.index', compact('houses'));
+        $housecount = House::all()->count();
+        return view('admin.house.index', compact('houses', 'housecount'));
     }
 
     /**

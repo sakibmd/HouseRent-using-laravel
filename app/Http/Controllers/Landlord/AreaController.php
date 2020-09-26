@@ -17,7 +17,8 @@ class AreaController extends Controller
     public function index()
     {
         $areas = Area::latest()->paginate(8);
-        return view('landlord.area.index', compact('areas'));
+        $areacount = Area::all()->count();
+        return view('landlord.area.index', compact('areas', 'areacount'));
     }
 
     /**
@@ -39,7 +40,7 @@ class AreaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required'
+            'name' => 'required|unique:areas'
         ]);
     
         $area = new Area();
@@ -80,7 +81,7 @@ class AreaController extends Controller
     public function update(Request $request, Area $area)
     {
         $this->validate($request,[
-            'name' => 'required',
+            'name' => 'required|unique:areas,name,'. $area->id ,
         ]);
     
         $area->name = $request->name;

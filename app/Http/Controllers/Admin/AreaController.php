@@ -17,7 +17,8 @@ class AreaController extends Controller
     public function index()
     {
         $areas = Area::latest()->paginate(8);
-        return view('admin.area.index', compact('areas'));
+        $areacount = Area::all()->count();
+        return view('admin.area.index', compact('areas', 'areacount'));
     }
 
     /**

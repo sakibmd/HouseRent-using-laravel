@@ -22,7 +22,7 @@
                                  <div class="card-body">
                                      <p>Area: {{ $house->area->name }}</p>
                                      <p>Address: {{ $house->address }}</p>
-                                     <p>Contact:  + 88 {{ $house->contact }}</p>
+                                     <p>Rent: {{ $house->rent }}</p>
                                      <a href="{{ route('house.details', $house->id) }}" class="btn btn-info">Details</a>
                                  </div>
                              </div>
