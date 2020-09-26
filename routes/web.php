@@ -12,8 +12,16 @@
 */
 
 Route::get('/', 'HomeController@index')->name('welcome');
+
+Route::get('/descending-order-houses-price', 'HomeController@highToLow')->name('highToLow');
+Route::get('/ascending-order-houses-price', 'HomeController@lowToHigh')->name('lowToHigh');
+
+
+Route::get('/search-result', 'HomeController@search')->name('search');
+
 Route::get('/houses/details/{id}', 'HomeController@details')->name('house.details');
 Route::get('/all-available/houses', 'HomeController@allHouses')->name('house.all');
+Route::get('/available-houses/area/{id}', 'HomeController@areaWiseShow')->name('available.area.house');
 
 
 

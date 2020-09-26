@@ -42,6 +42,19 @@ footer{
 	color: whitesmoke;
 }
 
+.area-wise-show{
+	padding: 60px;
+	color: rgb(255, 255, 255);
+	background-color: gray;
+	
+}
+
+h2 .area-wise-not-available{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
 
 
 /* start content section */

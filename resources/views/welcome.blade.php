@@ -1,6 +1,8 @@
 @extends('layouts.frontend.app')
 
-@section('title','Home')
+@section('title')
+    House Rent - Homepage
+@endsection
     
 @section('content')
     <div id="search">
@@ -10,11 +12,18 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-9">
-                    <form action="" method="get">
+                    <form action="{{ route('search') }}" method="GET">
                         @csrf
+                        <div class="row justify-content-center">
+                            @if(session('search'))
+                                <div class="alert alert-danger mt-3" id="alert" roles="alert">
+                                    {{ session('search') }} 
+                                </div> 
+                            @endif 
+                        </div> 
                         <div class="row">
                             <div class="form-group col-md-3">
-                                <input type="text" name="rooms" placeholder="rooms" class="form-control">
+                                <input type="text" name="room" placeholder="room" class="form-control">
                             </div>
                             <div class="form-group col-md-3">
                                 <input type="text" name="bathroom" placeholder="bathroom" class="form-control">
@@ -44,7 +53,7 @@
                 
                    <div class="row">
                         @forelse ($houses as $house)
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="card my-3">
                                     <div class="card-header">
                                         <img  src="{{ asset('storage/featured_house/'. $house->featured_image) }}" class="img-fluid" alt="Card image">
@@ -70,8 +79,9 @@
             <div class="col-md-3">
                     <ul class="list-group sort">
                         <li class="list-group-item bg-dark text-light"><strong>Sort By Price</strong></li>
-                        <li class="list-group-item"><a href="">High to low</a></li>
-                        <li class="list-group-item"><a href="">Low to High</a></li>
+                        <li class="list-group-item"><a href="{{ route('highToLow') }}">High to low</a></li>
+                        <li class="list-group-item"><a href="{{ route('lowToHigh') }}">Low to High</a></li>
+                        <li class="list-group-item"><a href="{{ route('welcome') }}">Normal Order</a></li>
                     </ul>
 
 
@@ -80,7 +90,7 @@
                         <li class="list-group-item bg-dark text-light"><strong>Areas</strong></li>
                         @forelse ($areas as $area)
                             <li class="list-group-item">
-                                <a href="" class="area-name">{{ $area->name }}</a>
+                                <a href="{{ route('available.area.house', $area->id) }}" class="area-name">{{ $area->name }} <strong>({{ $area->houses->count() }})</strong></a>
                             </li>
                         @empty  
                             <li class="list-group-item">Area not found</li>

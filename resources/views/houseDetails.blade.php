@@ -14,7 +14,7 @@
                           <h3><strong>House Details</strong></h3>
                       </div>
                       <div>
-                          <a class="btn btn-danger" href="{{ route('welcome') }}"> Back</a>
+                          <a class="btn btn-danger" href="{{ URL::previous() }}"> Back</a>
                           <a class="btn btn-info" href="">Apply for booking</a>
                       </div>
                   </div>
