@@ -46,6 +46,12 @@ footer{
 
 
 
+.login-register{
+	background-image: url('../img/login-register.jpg');
+	background-attachment: fixed;
+	background-size: cover;
+}
+
 
 #search{
 	padding: 100px 0px;

@@ -4,7 +4,7 @@
     
 
 @section('content')
-<div class="container my-5">
+{{-- <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -18,7 +18,6 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -73,10 +72,77 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+
+<div class="container-fluid login-register">
+    <div class="row">
+      <div class="col-md-3 col-lg-4 col-sm-2 col-xs-2">
+      
+      </div>
+      <div class="col-md-6 col-lg-4  col-sm-8 col-xs-8">
+        <div class="card">
+          <div class="card-header">
+            
+            <h3 style="color: white;"> <strong>Login</strong> </h3>
+          </div>
+
+          <div class="card-body">
+            
+             <form action="{{ route('login') }}" method="POST"> 
+
+               @csrf
+
+               @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                @endif
+
+
+
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Enter your email" name="email" value="{{ old('email') }}">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="Enter your password" name="password">
+              </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            @if (Route::has('password.request'))
+                    <center> <a class="btn btn-link text-white" href="{{ route('password.request') }}">
+                                                {{ __('Forgot Your Password?') }}
+                            </a>
+                    </center>
+             @endif
+          </form> 
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-4  col-sm-2 col-xs-2">
+        
+      </div>
+    </div>
+  </div>
 @endsection
 
 
 @section('css')
-   
+<style>
+    .card{
+        background: black;
+        background-color: rgba(0,0,0,.5);
+        margin-top: 70px;
+        margin-bottom: 70px;
+    }
+    .icon {
+        font-size: 25px;
+    }
+
+</style>
 @endsection
