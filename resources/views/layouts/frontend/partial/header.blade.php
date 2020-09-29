@@ -42,7 +42,7 @@
                   <a class="nav-link" href="{{ route('welcome') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('house.all') }}">All Availabel Houses</a>
+                  <a class="nav-link" href="{{ route('house.all') }}">All Available Houses</a>
                 </li>
                
 

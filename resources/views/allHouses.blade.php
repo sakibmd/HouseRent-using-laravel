@@ -16,14 +16,23 @@
                      @forelse ($houses as $house)
                          <div class="col-md-4">
                              <div class="card my-3">
-                                 <div class="card-header">
+                                 <div class="">
                                      <img  src="{{ asset('storage/featured_house/'. $house->featured_image) }}" class="img-fluid" alt="Card image">
                                  </div>
                                  <div class="card-body">
                                      <p>Area: {{ $house->area->name }}</p>
                                      <p>Address: {{ $house->address }}</p>
                                      <p>Rent: {{ $house->rent }}</p>
-                                     <a href="{{ route('house.details', $house->id) }}" class="btn btn-info">Details</a>
+                                 </div>
+                                 <div class="card-footer">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <a href="{{ route('house.details', $house->id) }}" class="btn btn-info">Details</a>
+                                        </div>
+                                        <div>
+                                            <a class="btn btn-warning">Apply for booking</a>
+                                        </div>
+                                    </div>
                                  </div>
                              </div>
                          </div>

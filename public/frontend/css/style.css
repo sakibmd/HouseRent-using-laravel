@@ -21,6 +21,7 @@
 	margin-left: 12px;
 }
 
+
 footer{
 	background-color: rgb(25, 34, 33);
 	color: whitesmoke;
@@ -29,6 +30,18 @@ footer{
 
 #footer p{
 	text-align: justify;
+}
+
+#footer .social .fab{
+	font-size: 36px;
+	margin: 20px 12px;
+	color: white;
+	transition: 1s;
+}
+
+#footer .social .fab:hover{
+	color: rgb(179, 170, 170);
+	transition: 1s;
 }
 
 
