@@ -14,7 +14,8 @@
 
 
     .col-md-3{
-        background-color: rgb(95, 93, 182);
+        background-color: #18355d;
+        transition: 1s;
         height: 200px;
         padding: 20px;
         margin: 20px 33px; 
@@ -27,7 +28,7 @@
     }
 
     .col-md-3:hover{
-        background: rgb(94, 114, 158)
+        background: rgb(79, 99, 143)
     }
 
  </style> 

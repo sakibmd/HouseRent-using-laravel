@@ -17,9 +17,9 @@
                     </div>
                     <!-- /.card-header -->
                     @if ($areas->count() > 0)
-                    <div class="card-body">
+                    <div class="">
                     <div class="table-responsive">
-                      <table id="dataTableId" class="table table-bordered table-striped bg-dark">
+                      <table id="dataTableId" class="table table-bordered table-striped table-background">
                         <thead>
                         <tr>
                           <th>Name</th>
@@ -35,11 +35,16 @@
                           <td>{{ $area->created_at->toFormattedDateString() }}</td>
                           <td>{{ $area->houses->count() }}</td>
                           <td>
-                            <a href="{{ route('landlord.area.edit', $area->id) }}"  class="btn btn-info">Edit</a>
-                            <button class="btn btn-danger" type="button" onclick="deleteArea({{ $area->id }})">
+                            
+                            @if ($area->user_id == Auth::id())
+                              <a href="{{ route('landlord.area.edit', $area->id) }}"  class="btn btn-info">Edit</a>
+                              <button class="btn btn-danger" type="button" onclick="deleteArea({{ $area->id }})">
                                 Delete
-                            </button>
-            
+                              </button>
+                            @else 
+                              Created By {{ $area->user->name }}
+                            @endif
+                           
                           <form id="delete-form-{{ $area->id }}" action="{{ route('landlord.area.destroy',$area->id) }}" method="POST" style="display: none;">
                               @csrf
                               @method('DELETE')

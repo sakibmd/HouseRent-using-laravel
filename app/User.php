@@ -46,6 +46,12 @@ class User extends Authenticatable
         return $this->hasMany(House::class);
     }
 
+    public function areas(){
+        return $this->hasMany(Area::class);
+    }
+
+
+
 
 
 }

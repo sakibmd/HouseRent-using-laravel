@@ -22,16 +22,19 @@
                             @endif 
                         </div> 
                         <div class="row">
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
+                                <input type="text" name="address" placeholder="search an area" class="form-control">
+                            </div>
+                            <div class="form-group col-md-2">
                                 <input type="text" name="room" placeholder="room" class="form-control">
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <input type="text" name="bathroom" placeholder="bathroom" class="form-control">
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <input type="text" name="rent" placeholder="rent" class="form-control">
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <button type="submit" class="btn btn-success">Search</button>
                             </div>
                         </div>
@@ -53,7 +56,7 @@
                 
                    <div class="row">
                         @forelse ($houses as $house)
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="card my-3">
                                     <div class="">
                                         <img  src="{{ asset('storage/featured_house/'. $house->featured_image) }}" class="img-fluid" alt="Card image">
@@ -69,7 +72,7 @@
                                                 <a href="{{ route('house.details', $house->id) }}" class="btn btn-info">Details</a>
                                             </div>
                                             <div>
-                                                <a class="btn btn-warning">Apply for booking</a>
+                                                {{-- <a class="btn btn-warning">Apply for booking</a> --}}
                                             </div>
                                         </div>
                                      </div>
@@ -86,6 +89,24 @@
                    
             </div>
             <div class="col-md-3">
+                <ul class="list-group sort">
+                    <li class="list-group-item bg-dark text-light"><strong>Search By Range</strong></li>
+                    <form action="{{ route('searchByRange') }}" method="get" class="mt-2">
+                        <div class="form-group">
+                            <input type="text" class="form-control" required name="digit1" placeholder="enter range (lower value)">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" required name="digit2" placeholder="enter range (upper value)">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-sm btn-success btn-block">Search</button>
+                        </div>
+                    </form>
+                </ul>
+
+
+
+
                     <ul class="list-group sort">
                         <li class="list-group-item bg-dark text-light"><strong>Sort By Price</strong></li>
                         <li class="list-group-item"><a href="{{ route('highToLow') }}">High to low</a></li>

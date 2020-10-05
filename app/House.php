@@ -13,4 +13,6 @@ class House extends Model
     public function area(){
         return $this->belongsTo(Area::class);
     }
+
+    
 }

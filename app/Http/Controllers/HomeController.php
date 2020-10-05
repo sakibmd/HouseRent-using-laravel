@@ -65,9 +65,10 @@ class HomeController extends Controller
         $room = $request->room;
         $bathroom = $request->bathroom;
         $rent = $request->rent;
+        $address = $request->address;
         
 
-        if( $room == null && $bathroom == null && $rent == null){
+        if( $room == null && $bathroom == null && $rent == null && $address == null){
             session()->flash('search', 'Your have to fill up minimum one field for search');
             return redirect()->back();
         }
@@ -75,8 +76,22 @@ class HomeController extends Controller
         $houses = House::where('rent', 'LIKE', $rent)
             ->where('number_of_toilet', 'LIKE', $bathroom)
             ->where('number_of_room', 'LIKE',  $room)
+            ->where('address', 'LIKE', "%$address%")
             ->get();
         return view('search', compact('houses'));
+    }
+
+    public function searchByRange(Request $request){
+        $digit1 = (int) $request->digit1;
+        $digit2 = (int) $request->digit2;
+        if($digit1 > $digit2){
+            $temp = $digit1;
+            $digit1 =  $digit2;
+            $digit2 = $temp;
+        }
+        $houses = House::whereBetween('rent', [$digit1, $digit2])
+                        ->orderBy('rent', 'ASC')->get();
+        return view('searchByRange', compact('houses'));
     }
 
 }

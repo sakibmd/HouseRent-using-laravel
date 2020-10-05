@@ -1,0 +1,15 @@
+/* some sumtom design */
+
+.table-background{
+	background-color:#dbf0f8;
+    color:#18355d;
+    margin-bottom: 0%;
+}
+.card-header{
+    background-color:#14455F;
+    color:#f5fbff;
+}
+
+.table td, th{
+    text-align: center;
+}

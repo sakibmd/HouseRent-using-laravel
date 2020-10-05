@@ -111,7 +111,7 @@
             </li>
 
             <li class="nav-item has-treeview">
-              <a href="{{ route('landlord.profile.show') }}" class="nav-link {{ Request::is('landlord/profile-info') ? 'active' : '' }}">
+              <a href="{{ route('landlord.profile.show') }}" class="nav-link {{ Request::is('landlord/profile-info*') ? 'active' : '' }}">
                 <i class="fas fa-user"></i>
                 <p class="pl-2">
                   Profile Info

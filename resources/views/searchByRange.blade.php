@@ -1,7 +1,7 @@
 @extends('layouts.frontend.app')
 
 @section('title')
-    House Renter - Search Result
+    House Renter - Search By Range
 @endsection
     
 @section('content')

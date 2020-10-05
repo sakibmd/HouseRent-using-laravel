@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-9">
                 <div class="card mt-5">
-                    <div class="card-header  bg-info">
+                    <div class="card-header">
                       <h3 class="card-title float-left"><strong>Edit House</strong></h3>
                   
                     </div>

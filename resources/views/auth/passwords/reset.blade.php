@@ -1,4 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.frontend.app')
+
+@section('title')
+    House Rent - Give Password
+@endsection
+
 
 @section('content')
 <div class="container">

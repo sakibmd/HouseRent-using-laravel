@@ -8,16 +8,16 @@
             <div class="col-md-12">
                @include('partial.successMessage')  
 
-                <div class="card mt-5">
-                    <div class="card-header" style="background-color: rgb(61, 20, 20);color:whitesmoke">
+                <div class="card my-5 p-0">
+                    <div class="card-header">
                       <h3 class="card-title float-left"><strong>All Landlords ({{ $landlords->count() }})</strong></h3>
                 
                     </div>
                     <!-- /.card-header -->
                     @if ($landlords->count() > 0)
-                    <div class="card-body">
+                    <div class="">
                     <div class="table-responsive">
-                      <table id="dataTableId" class="table table-bordered table-striped bg-dark">
+                      <table id="dataTableId" class="table table-bordered table-striped table-background">
                         <thead>
                         <tr>
                           <th>Name</th>

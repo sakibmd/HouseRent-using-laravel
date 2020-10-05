@@ -30,7 +30,7 @@
                                             <a href="{{ route('house.details', $house->id) }}" class="btn btn-info">Details</a>
                                         </div>
                                         <div>
-                                            <a class="btn btn-warning">Apply for booking</a>
+                                            {{-- <a class="btn btn-warning">Apply for booking</a> --}}
                                         </div>
                                     </div>
                                  </div>

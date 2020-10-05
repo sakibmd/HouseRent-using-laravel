@@ -6,15 +6,13 @@
           color: white! important;
           font-weight: bold;
         }
-        .navbar ul li a:hover{
+      .navbar ul li a:hover{
           background-color: rgb(203, 206, 205);
           color: black;
           padding: 5px;
           height: 100%;
-        }
+      }
     </style>
-    
-  
 
         <div class="container-fluid">
             <div class="row">

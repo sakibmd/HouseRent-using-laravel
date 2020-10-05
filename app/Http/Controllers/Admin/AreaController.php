@@ -6,6 +6,7 @@ use App\Area;
 use App\House;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AreaController extends Controller
 {
@@ -40,11 +41,12 @@ class AreaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required'
+            'name' => 'required|unique:areas'
         ]);
     
         $area = new Area();
         $area->name = $request->name;
+        $area->user_id = Auth::id();
         $area->save();
         return redirect(route('admin.area.index'))->with('success', 'Area Added successfully');
     }
@@ -81,7 +83,7 @@ class AreaController extends Controller
     public function update(Request $request, Area $area)
     {
         $this->validate($request,[
-            'name' => 'required',
+            'name' => 'required|unique:areas, name,'. $area->id,
         ]);
     
         $area->name = $request->name;

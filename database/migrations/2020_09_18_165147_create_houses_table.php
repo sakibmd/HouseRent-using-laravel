@@ -16,13 +16,13 @@ class CreateHousesTable extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('address');
-            $table->string('area_id');
+            $table->integer('area_id');
             $table->integer('user_id');
-            $table->string('contact');
-            $table->string('number_of_room');
-            $table->string('number_of_toilet');
-            $table->string('number_of_belcony');
-            $table->string('rent');
+            $table->integer('contact');
+            $table->integer('number_of_room');
+            $table->integer('number_of_toilet');
+            $table->integer('number_of_belcony');
+            $table->integer('rent');
             $table->string('featured_image');
             $table->text('images');
             $table->string('status')->default(1);  //1 means available

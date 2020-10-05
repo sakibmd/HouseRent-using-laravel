@@ -18,6 +18,7 @@ Route::get('/ascending-order-houses-price', 'HomeController@lowToHigh')->name('l
 
 
 Route::get('/search-result', 'HomeController@search')->name('search');
+Route::get('/search-result-by-range', 'HomeController@searchByRange')->name('searchByRange');
 
 Route::get('/houses/details/{id}', 'HomeController@details')->name('house.details');
 Route::get('/all-available/houses', 'HomeController@allHouses')->name('house.all');
