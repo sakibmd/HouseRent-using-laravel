@@ -25,7 +25,7 @@ Route::get('/all-available/houses', 'HomeController@allHouses')->name('house.all
 Route::get('/available-houses/area/{id}', 'HomeController@areaWiseShow')->name('available.area.house');
 
 
-Route::get('/house-booking', 'HomeController@booking')->name('booking');
+Route::post('/house-booking/id/{id}', 'HomeController@booking')->name('booking');
 
 
 
@@ -62,6 +62,14 @@ function(){
 	Route::resource('house','HouseController');
 	Route::get('house/switch-status/{id}','HouseController@switch')->name('house.status');
 
+
+	Route::get('booking-request-list','BookingController@bookingRequestListForLandlord')->name('bookingRequestList');
+	Route::post('booking-request/accept/{id}','BookingController@bookingRequestAccept')->name('request.accept');
+	Route::post('booking-request/reject/{id}','BookingController@bookingRequestReject')->name('request.reject');
+	Route::get('booking/history','BookingController@bookingHistory')->name('history');
+	Route::post('renter/leave/{id}','BookingController@leaveRenter')->name('leave.renter');
+
+
 	Route::get('profile-info', 'SettingsController@showProfile')->name('profile.show');
 	Route::get('profile-info/edit/{id}', 'SettingsController@editProfile')->name('profile.edit');
 	Route::post('profile-info/update/', 'SettingsController@updateProfile')->name('profile.update');
@@ -73,6 +81,15 @@ function(){
 Route::group([ 'as'=>'renter.','prefix'=>'renter' , 'namespace'=>'renter', 'middleware'=>['auth','renter']],
 function(){
 	Route::get('dashboard','DashboardController@index')->name('dashboard');
+
+	Route::get('areas', 'DashboardController@areas')->name('areas');
+
+	Route::get('houses', 'DashboardController@allHouses')->name('allHouses');
+	Route::get('house/details/{id}', 'DashboardController@housesDetails')->name('houses.details');
+
+	Route::get('booking/history','DashboardController@bookingHistory')->name('booking.history');
+	Route::get('pending/booking','DashboardController@bookingPending')->name('booking.pending');
+	Route::post('pending/booking/cancel/{id}','DashboardController@cancelBookingRequest')->name('cancel.booking.request');
 });
 
 

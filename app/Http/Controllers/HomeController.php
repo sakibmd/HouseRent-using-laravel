@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Area;
+use App\Booking;
 use App\House;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -92,6 +96,39 @@ class HomeController extends Controller
         $houses = House::whereBetween('rent', [$digit1, $digit2])
                         ->orderBy('rent', 'ASC')->get();
         return view('searchByRange', compact('houses'));
+    }
+
+
+    public function booking($house){
+        
+        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2){
+            session()->flash('danger', 'Sorry admin and landlord are not able to book any houses. Please login with renter account');
+            return redirect()->back();
+        }
+
+    
+        $now = Carbon::now();
+        $now = $now->format('F Y');
+        
+
+
+        $house = House::findOrFail($house);
+        $landlord = User::where('id', $house->user_id)->first();
+         
+
+        $booking = new Booking();
+        $booking->address = $house->address;
+        $booking->rent = $house->rent;
+        $booking->entry = $now;
+        $booking->landlord_id = $landlord->id;
+        $booking->renter_id = Auth::id();
+        $booking->save();
+
+
+        session()->flash('success', 'House Booked Successfully');
+        return redirect()->back();
+ 
+
     }
 
 }

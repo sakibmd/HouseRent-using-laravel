@@ -12,6 +12,7 @@
                   <div class="d-flex justify-content-between">
                       <div>
                           <h3><strong>House Details</strong></h3>
+                          
                       </div>
                       <div>
                           <a class="btn btn-danger" href="{{ URL::previous() }}"> Back</a>
@@ -36,6 +37,9 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
+                            <tr>
+                                @include('partial.successMessage')
+                            </tr>
                             <tr>
                                 <th>Address</th>
                                 <td>{{ $house->address }}</td>

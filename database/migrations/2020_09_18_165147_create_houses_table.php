@@ -18,7 +18,7 @@ class CreateHousesTable extends Migration
             $table->string('address');
             $table->integer('area_id');
             $table->integer('user_id');
-            $table->integer('contact');
+            $table->string('contact');
             $table->integer('number_of_room');
             $table->integer('number_of_toilet');
             $table->integer('number_of_belcony');
