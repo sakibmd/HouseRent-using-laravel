@@ -15,7 +15,19 @@
                       </div>
                       <div>
                           <a class="btn btn-danger" href="{{ URL::previous() }}"> Back</a>
-                          <a class="btn btn-info" href="">Apply for booking</a>
+                          
+                        @guest
+                            <a  href="" onclick="guestBooking()" class="btn btn-info">Apply for booking</a>
+                        @else
+                            <button class="btn btn-info" type="button" onclick="renterBooking({{ $house->id }})">
+                                Apply for booking
+                            </button>
+            
+                            <form id="booking-form-{{ $house->id }}" action="{{ route('booking', $house->id) }}" method="POST" style="display: none;">
+                                @csrf
+                               
+                            </form>
+                        @endguest
                       </div>
                   </div>
               
@@ -98,6 +110,7 @@
 
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script>
    window.addEventListener('load', function() {
         baguetteBox.run('.gallery', {
@@ -105,8 +118,58 @@
             noScrollbars: true
         });
    });
+
+   function guestBooking(){
+                Swal.fire(
+                    'If you want to booking this house',
+                    'Then you must have to login first as a renter',
+                )
+                event.preventDefault();     
+    }
+
+    function renterBooking(id){
+           const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+            
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure to booking this house?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No',
+                reverseButtons: true
+                }).then((result) => {
+                    if (result.value) {
+                        event.preventDefault();
+                        document.getElementById('booking-form-'+id).submit();
+                
+                    } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                    swalWithBootstrapButtons.fire(
+                        'Not Now!',
+                        
+                    )
+                }
+            })
+       }
+
 </script>
 @endsection
+
+
+
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
 @endsection
+
+
+
+
+   

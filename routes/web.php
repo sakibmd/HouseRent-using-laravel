@@ -25,6 +25,9 @@ Route::get('/all-available/houses', 'HomeController@allHouses')->name('house.all
 Route::get('/available-houses/area/{id}', 'HomeController@areaWiseShow')->name('available.area.house');
 
 
+Route::get('/house-booking', 'HomeController@booking')->name('booking');
+
+
 
 Auth::routes();
 

@@ -49,3 +49,20 @@
  </div>
 
 @endsection
+
+@section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script>
+         function guestBooking(){
+                Swal.fire({
+                    title: 'To book a house, You Need To Login First as a Renter!',
+                    showClass: {
+                        popup: 'animated fadeInDown faster'
+                    },
+                    hideClass: {
+                        popup: 'animated fadeOutUp faster'
+                    }
+                    })
+            }
+    </script>
+@endsection

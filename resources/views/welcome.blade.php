@@ -93,10 +93,10 @@
                     <li class="list-group-item bg-dark text-light"><strong>Search By Range</strong></li>
                     <form action="{{ route('searchByRange') }}" method="get" class="mt-2">
                         <div class="form-group">
-                            <input type="text" class="form-control" required name="digit1" placeholder="enter range (lower value)">
+                            <input type="number" class="form-control" required name="digit1" placeholder="enter range (lower value)">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" required name="digit2" placeholder="enter range (upper value)">
+                            <input type="number" class="form-control" required name="digit2" placeholder="enter range (upper value)">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-sm btn-success btn-block">Search</button>

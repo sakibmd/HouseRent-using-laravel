@@ -34,7 +34,7 @@
                         <tr>
                           <td>{{ $house->address }}</td>
                           {{-- <td>{{ $house->created_at->toFormattedDateString() }}</td> --}}
-                          <td>{{ $house->contact }}</td>
+                          <td>{{ $house->user->contact }}</td>
                           <td>{{ $house->number_of_room }}</td>
                           <td>
                             @if ($house->status == 1)
