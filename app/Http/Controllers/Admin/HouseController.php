@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Booking;
 use App\House;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -84,6 +85,13 @@ class HouseController extends Controller
     }
 
     public function removeRenter($id){
+
+        if(Booking::where('renter_id', $id)->where('booking_status', "booked")->count() > 0){
+            session()->flash('danger', 'You do not able to remove this renter. Because he/she have already booked houses from your website');
+            return redirect()->back();
+        }
+
+
         $user = User::findOrFail($id);
         $user->delete();
 

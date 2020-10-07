@@ -86,8 +86,8 @@ class HomeController extends Controller
     }
 
     public function searchByRange(Request $request){
-        $digit1 = (int) $request->digit1;
-        $digit2 = (int) $request->digit2;
+        $digit1 =  $request->digit1;
+        $digit2 =  $request->digit2;
         if($digit1 > $digit2){
             $temp = $digit1;
             $digit1 =  $digit2;
@@ -101,31 +101,35 @@ class HomeController extends Controller
 
     public function booking($house){
         
-        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2){
-            session()->flash('danger', 'Sorry admin and landlord are not able to book any houses. Please login with renter account');
-            return redirect()->back();
-        }
-
-    
-        $now = Carbon::now();
-        $now = $now->format('F Y');
-        
+        // if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2){
+        //     session()->flash('danger', 'Sorry admin and landlord are not able to book any houses. Please login with renter account');
+        //     return redirect()->back();
+        // }
 
 
         $house = House::findOrFail($house);
         $landlord = User::where('id', $house->user_id)->first();
-         
 
+        if(Booking::where('address', $house->address)->where('renter_id', Auth::id())->where('booking_status', "requested")->count() > 0){
+            session()->flash('danger', 'Your have already sent booking request of this home');
+            return redirect()->back();
+        }
+
+    
+        //find current date month year
+        // $now = Carbon::now();
+        // $now = $now->format('F d, Y');
+        
+        
         $booking = new Booking();
         $booking->address = $house->address;
         $booking->rent = $house->rent;
-        $booking->entry = $now;
         $booking->landlord_id = $landlord->id;
         $booking->renter_id = Auth::id();
         $booking->save();
 
 
-        session()->flash('success', 'House Booked Successfully');
+        session()->flash('success', 'House Booking Request Send Successfully');
         return redirect()->back();
  
 

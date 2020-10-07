@@ -34,7 +34,7 @@
                         @foreach ($books as $book)
                         <tr>
                           <td>{{ $book->address }}</td>
-                          <td>{{ $book->entry }}</td>
+                          <td>{{ $book->created_at->format('F d, Y') }}</td>
                           <td>{{ $book->rent }}</td>
                           <td>{{ $book->renter->name }}</td>
                           <td>{{ $book->renter->contact }}</td>

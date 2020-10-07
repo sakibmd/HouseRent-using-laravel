@@ -25,10 +25,10 @@
                           <th>Leave</th>
                           <th>Rent</th>
                           <th>Renter Name</th>
-                          <th>Renter Contact</th>
-                          <th>Renter Nid</th>
                           <th>Landlord Name</th>
                           <th>Landlord Contact</th>
+                          <th>Landlord Nid</th>
+                          <th>Landlord Email</th>
                           
                         </tr>
                         </thead>
@@ -36,14 +36,14 @@
                         @foreach ($books as $book)
                         <tr>
                           <td>{{ $book->address }}</td>
-                          <td>{{ $book->entry }}</td>
+                          <td>{{ $book->created_at->format('F d, Y') }}</td>
                           <td>{{ $book->leave }}</td>
                           <td>{{ $book->rent }}</td>
                           <td>{{ $book->renter->name }}</td>
-                          <td>{{ $book->renter->contact }}</td>
-                          <td>{{ $book->renter->nid }}</td>
                           <td>{{ $book->landlord->name }}</td>
                           <td>{{ $book->landlord->contact }}</td>
+                          <td>{{ $book->landlord->nid }}</td>
+                          <td>{{ $book->landlord->email }}</td>
                           
                         </tr>
                         @endforeach    

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     public function index(){
-        $houses = House::where('user_id', Auth::id())->latest()->get();
+        $houses = House::latest()->get();
         $areas = Area::latest()->get();
         $renters = User::where('role_id', 3)->get();
         $landlords = User::where('role_id', 2)->get();
@@ -42,14 +42,8 @@ class DashboardController extends Controller
 
 
 
-
-
-
-
-
-
     public function bookingHistory(){
-        $books = Booking::where('renter_id', Auth::id())->where('booking_status', " ")->get();
+        $books = Booking::where('renter_id', Auth::id())->where('booking_status', '!=' , "requested")->get();
         return view('renter.booking.history', compact('books'));
     }
 

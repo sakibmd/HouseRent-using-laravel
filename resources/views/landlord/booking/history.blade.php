@@ -35,7 +35,7 @@
                         @foreach ($books as $book)
                         <tr>
                           <td>{{ $book->address }}</td>
-                          <td>{{ $book->entry }}</td>
+                          <td>{{ $book->created_at->format('F d, Y') }}</td>
                           <td>{{ $book->leave }}</td>
                           <td>{{ $book->rent }}</td>
                           <td>{{ $book->renter->name }}</td>
@@ -44,8 +44,8 @@
                           <td>{{ $book->renter->email }}</td>
                           <td>
                              {{-- start accept form --}}
-                             @if($book->booking_status == " ")
-                                <button class="btn btn-info" type="button" onclick="leave()">
+                             @if($book->booking_status == "booked")
+                                <button class="btn btn-danger" type="button" onclick="leave()">
                                     Leave
                                 </button>
                 

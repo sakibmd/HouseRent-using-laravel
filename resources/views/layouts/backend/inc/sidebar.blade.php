@@ -170,7 +170,7 @@
             <a href="{{ route('renter.booking.history') }}" class="nav-link {{ Request::is('renter/booking/history') ? 'active' : '' }}">
               <i class="fas fa-border-style"></i>
               <p class="pl-2">
-                Booking History
+                History
                
               </p>
             </a>
@@ -181,6 +181,15 @@
               <i class="fas fa-border-style"></i>
               <p class="pl-2">
                 Pending Booking
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('welcome') }}" class="nav-link">
+              <i class="fas fa-border-style"></i>
+              <p class="pl-2">
+                Go To Home Page
               </p>
             </a>
           </li>

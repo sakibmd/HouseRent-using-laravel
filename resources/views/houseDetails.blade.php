@@ -15,19 +15,21 @@
                           
                       </div>
                       <div>
-                          <a class="btn btn-danger" href="{{ URL::previous() }}"> Back</a>
+                          <a class="btn btn-danger" href="{{ route('welcome') }}"> Back</a>
                           
                         @guest
                             <a  href="" onclick="guestBooking()" class="btn btn-info">Apply for booking</a>
                         @else
-                            <button class="btn btn-info" type="button" onclick="renterBooking({{ $house->id }})">
-                                Apply for booking
-                            </button>
-            
-                            <form id="booking-form-{{ $house->id }}" action="{{ route('booking', $house->id) }}" method="POST" style="display: none;">
-                                @csrf
-                               
-                            </form>
+
+                            @if (Auth::user()->role_id == 3)
+                                <button class="btn btn-info" type="button" onclick="renterBooking({{ $house->id }})">
+                                    Apply for booking
+                                </button>
+                
+                                <form id="booking-form-{{ $house->id }}" action="{{ route('booking', $house->id) }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            @endif
                         @endguest
                       </div>
                   </div>

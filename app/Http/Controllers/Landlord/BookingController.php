@@ -17,7 +17,14 @@ class BookingController extends Controller
     }
 
     public function bookingRequestAccept($id){
+
         $book = Booking::findOrFail($id);
+
+
+        if(Booking::where('address', $book->address)->where('booking_status', "booked")->count() > 0){
+            session()->flash('danger', 'This house is already booked. Please cancel his/her booking request');
+            return redirect()->back(); 
+        }
 
 
         $house = House::where('address', $book->address)->first();
@@ -55,7 +62,7 @@ class BookingController extends Controller
         $house->save();
 
         $now = Carbon::now();
-        $now = $now->format('F Y');
+        $now = $now->format('F d, Y');
 
         $book->leave = $now;
         $book->booking_status = "";

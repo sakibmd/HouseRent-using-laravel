@@ -17,7 +17,6 @@ class CreateBookingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('address');
             $table->integer('rent');
-            $table->string('entry');
             $table->string('leave')->nullable();
             $table->integer('landlord_id');
             $table->integer('renter_id');

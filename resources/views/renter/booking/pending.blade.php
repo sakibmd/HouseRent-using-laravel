@@ -34,7 +34,7 @@
                         @foreach ($books as $book)
                         <tr>
                           <td>{{ $book->address }}</td>
-                          <td>{{ $book->entry }}</td>
+                          <td>{{ $book->created_at->format('F d, Y') }}</td>
                           <td>{{ $book->leave }}</td>
                           <td>{{ $book->rent }}</td>
                           <td>{{ $book->landlord->name }}</td>
@@ -42,7 +42,7 @@
                           <td>
                            
                             <button class="btn btn-danger" type="button" onclick="cancel()">
-                                Cancle Booking Request
+                                Cancel Booking Request
                             </button>
             
                             <form id="cancel-form" action="{{ route('renter.cancel.booking.request', $book->id) }}" method="POST" style="display: none;">
