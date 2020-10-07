@@ -17,7 +17,7 @@
                          <div class="col-md-4">
                              <div class="card my-3">
                                  <div class="">
-                                     <img  src="{{ asset('storage/featured_house/'. $house->featured_image) }}" class="img-fluid" alt="Card image">
+                                     <img  src="{{ asset('storage/featured_house/'. $house->featured_image) }}" width="100%" class="img-fluid" alt="Card image">
                                  </div>
                                  <div class="card-body">
                                      <p>Area: {{ $house->area->name }}</p>
