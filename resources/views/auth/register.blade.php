@@ -199,7 +199,7 @@
             </div>
 
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="contact" name="contact" value="{{ old('contact') }}">
+                <input type="text" class="form-control" placeholder="contact (please add 88 before number)" name="contact" value="{{ old('contact') }}">
             </div>
 
             <div class="input-group mb-3">

@@ -28,14 +28,13 @@ Route::get('/available-houses/area/{id}', 'HomeController@areaWiseShow')->name('
 Route::post('/house-booking/id/{id}', 'HomeController@booking')->name('booking');
 
 
-
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 //admin
 
-Route::group([ 'as'=>'admin.', 'prefix'=>'admin' , 'namespace'=>'Admin', 'middleware'=>['auth','admin']],
+Route::group([ 'as'=>'admin.', 'prefix'=>'admin' , 'namespace'=>'Admin', 'middleware'=>['auth','admin', 'verified']],
 function(){
 	Route::get('dashboard','DashboardController@index')->name('dashboard');
 	Route::resource('area','AreaController');
@@ -55,7 +54,7 @@ function(){
 
 //landlord
 
-Route::group([ 'as'=>'landlord.','prefix'=>'landlord' , 'namespace'=>'Landlord', 'middleware'=>['auth','landlord']],
+Route::group([ 'as'=>'landlord.','prefix'=>'landlord' , 'namespace'=>'Landlord', 'middleware'=>['auth','landlord', 'verified']],
 function(){
 	Route::get('dashboard','DashboardController@index')->name('dashboard');
 	Route::resource('area','AreaController');
@@ -78,7 +77,7 @@ function(){
 
 //renter
 
-Route::group([ 'as'=>'renter.','prefix'=>'renter' , 'namespace'=>'renter', 'middleware'=>['auth','renter']],
+Route::group([ 'as'=>'renter.','prefix'=>'renter' , 'namespace'=>'renter', 'middleware'=>['auth','renter', 'verified']],
 function(){
 	Route::get('dashboard','DashboardController@index')->name('dashboard');
 

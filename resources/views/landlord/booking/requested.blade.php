@@ -8,7 +8,7 @@
             <div class="col-md-12">
                @include('partial.successMessage')  
 
-                <div class="card mt-5">
+                <div class="card my-5 mx-4">
                     <div class="card-header">
                       <h3 class="card-title float-left"><strong>Booking Requests ({{ $books->count() }})</strong></h3>
                       
@@ -27,7 +27,7 @@
                           <th>Renter Contact</th>
                           <th>Renter Nid</th>
                           <th>Renter Email</th>
-                          <th>Action</th>
+                          <th colspan="2">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,26 +42,32 @@
                           <td>{{ $book->renter->email }}</td>
                           <td>
                              {{-- start accept form --}}
-                            <button class="btn btn-info" type="button" onclick="accept()">
+                            <button class="btn btn-info" type="button" onclick="accept({{ $book->id }})">
                                 Accept
                             </button>
-            
-                            <form id="accept-form" action="{{ route('landlord.request.accept',$book->id) }}" method="POST" style="display: none;">
+              
+                            <form id="accept-form-{{ $book->id }}" action="{{ route('landlord.request.accept', $book->id) }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
+
                             {{-- end accept form --}}
-                             
-                            {{-- start reject form --}}
-                            <button class="btn btn-danger" type="button" onclick="reject()">
-                                Reject
-                            </button>
-            
-                            <form id="reject-form" action="{{ route('landlord.request.reject',$book->id) }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                            {{-- close reject form --}}
-                            
-                          </td>
+
+                        </td>
+
+                        <td>
+                            {{-- start accept form --}}
+                           <button class="btn btn-danger" type="button" onclick="reject({{ $book->id }})">
+                               Reject
+                           </button>
+             
+                           <form id="reject-form-{{ $book->id }}" action="{{ route('landlord.request.reject', $book->id) }}" method="POST" style="display: none;">
+                               @csrf
+                           </form>
+
+                           {{-- end accept form --}}
+
+                       </td>
+                      
                         </tr>
                         @endforeach    
                         </tbody>
@@ -87,7 +93,7 @@
  @section('scripts')
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
  <script>
-     function accept(){
+     function accept(id){
            const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                 confirmButton: 'btn btn-success',
@@ -107,7 +113,7 @@
                 if (result.value) {
                     
                     event.preventDefault();
-                    document.getElementById('accept-form').submit();
+                    document.getElementById('accept-form-'+id).submit();
             
                 } else if (
                 /* Read more about handling dismissals below */
@@ -122,7 +128,7 @@
 
 
 
-        function reject(){
+        function reject(id){
            const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                 confirmButton: 'btn btn-success',
@@ -142,7 +148,7 @@
                 if (result.value) {
                     
                     event.preventDefault();
-                    document.getElementById('reject-form').submit();
+                    document.getElementById('reject-form-'+id).submit();
             
                 } else if (
                 /* Read more about handling dismissals below */

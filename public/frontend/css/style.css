@@ -96,8 +96,68 @@ h2 .area-wise-not-available{
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+ .grey{
+	color: grey;
+}
+
+
+
+ .address{
+	color: grey;
+}
+ .address:hover{
+	color: rgb(79, 70, 70);
+}
+
+.card-body h4{
+	color: rgb(202, 85, 85);
+	font-weight: 600;
+}
+
 /* end content section */
 
+
+
+/* ----------------------------------our-story----------------------------------- */
+#our-story{
+	padding: 80px 0px;
+  }
+  #our-story  .col-md-6 .story {
+	padding-top: 60px;
+	font-weight: 800;
+	padding-bottom: 15px;
+	font-family: 'Lalezar', cursive;
+  }
+  #our-story  .col-md-6 .pera {
+	
+	font-weight: 500;
+	padding-right: 48px;
+	color: grey;
+	text-align: justify;
+  }
+  
+
+
+
+.section-4{
+	margin-top: 10%;
+}
+.section-4 .row .col-md-7, .col-md-5 {
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.section-4 a{
+	font-size:40px;
+	text-decoration: none;
+	color:lightseagreen; 
+}
+.section-4 .para-1{
+	color:white; 
+	margin-top: 7%;
+	font-family:'Roboto Condensed'; 
+	font-size: 23px;
+}
 
 
 

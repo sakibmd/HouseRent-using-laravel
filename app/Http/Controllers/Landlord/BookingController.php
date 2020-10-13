@@ -29,9 +29,37 @@ class BookingController extends Controller
 
         $house = House::where('address', $book->address)->first();
         $house->status = 0;
+
+
+        $renterContact = $book->renter->contact;
+        $renterName = $book->renter->name;
+        $houseAddress = $book->address;
+        
+        $url = "http://66.45.237.70/api.php";
+        $number="$renterContact";
+        $text="Hello $renterName,
+Your Booking Request for Address: $houseAddress, has been ACCEPTED.
+
+Regards,
+House Rental";
+        $data= array(
+        'username'=>"01670605075",
+        'password'=>"Cefixime*58#",
+        'number'=>"$number",
+        'message'=>"$text"
+        );
+
+        $ch = curl_init(); // Initialize cURL
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $smsresult = curl_exec($ch);
+        $p = explode("|",$smsresult);
+        $sendstatus = $p[0];
+
+
+
         $house->save();
-
-
         $book->leave = "Currently Staying";
         $book->booking_status = "booked";
         $book->save();
@@ -41,7 +69,39 @@ class BookingController extends Controller
     }
 
     public function bookingRequestReject($id){
-        Booking::find($id)->delete();
+
+        $book = Booking::find($id);
+        
+        $renterContact = $book->renter->contact;
+        $renterName = $book->renter->name;
+        $houseAddress = $book->address;
+        
+        $url = "http://66.45.237.70/api.php";
+        $number="$renterContact";
+        $text="Hello $renterName,
+Your Booking Request for Address: $houseAddress, has been REJECTED.
+
+Regards,
+House Rental";
+        $data= array(
+        'username'=>"01670605075",
+        'password'=>"Cefixime*58#",
+        'number'=>"$number",
+        'message'=>"$text"
+        );
+
+        $ch = curl_init(); // Initialize cURL
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $smsresult = curl_exec($ch);
+        $p = explode("|",$smsresult);
+        $sendstatus = $p[0];
+        
+        
+        
+        
+        $book->delete();
 
         session()->flash('success', 'Booking Rejected Successfully');
         return redirect()->back(); 

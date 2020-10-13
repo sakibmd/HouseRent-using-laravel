@@ -8,7 +8,7 @@
             <div class="col-md-12">
                @include('partial.successMessage')  
 
-                <div class="card mt-5">
+                <div class="card my-5 mx-4">
                     <div class="card-header">
                       <h3 class="card-title float-left"><strong>Your Houses ({{ $housecount }})</strong></h3>
                       
@@ -45,10 +45,10 @@
                           </td>
                           <td>
                              
-                            <a href="{{ route('landlord.house.status', $house->id) }}"  class="btn btn-warning m-2">Switch Status</a>
-                            <a href="{{ route('landlord.house.show', $house->id) }}"  class="btn btn-success m-2">Details</a>
-                            <a href="{{ route('landlord.house.edit', $house->id) }}"  class="btn btn-info m-2">Edit</a>
-                            <button class="btn btn-danger m-2" type="button" onclick="deleteHouse({{ $house->id }})">
+                            <a href="{{ route('landlord.house.status', $house->id) }}"  class="btn btn-warning btn-sm ">Switch Status</a>
+                            <a href="{{ route('landlord.house.show', $house->id) }}"  class="btn btn-success btn-sm">Details</a>
+                            <a href="{{ route('landlord.house.edit', $house->id) }}"  class="btn btn-info btn-sm">Edit</a>
+                            <button class="btn btn-danger btn-sm" type="button" onclick="deleteHouse({{ $house->id }})">
                                 Delete
                             </button>
             

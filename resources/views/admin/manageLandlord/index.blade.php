@@ -8,7 +8,7 @@
             <div class="col-md-12">
                @include('partial.successMessage')  
 
-                <div class="card my-5 p-0">
+                <div class="card my-5 mx-4 p-0">
                     <div class="card-header">
                       <h3 class="card-title float-left"><strong>All Landlords ({{ $landlords->count() }})</strong></h3>
                 

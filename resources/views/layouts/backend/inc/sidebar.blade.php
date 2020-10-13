@@ -121,7 +121,7 @@
 
             <li class="nav-item has-treeview">
               <a href="{{ route('landlord.bookingRequestList') }}" class="nav-link {{ Request::is('landlord/booking-request-list') ? 'active' : '' }}">
-                <i class="fas fa-user"></i>
+                <i class="fas fa-chalkboard"></i>
                 <p class="pl-2">
                   Booking Request
                 </p>
@@ -130,7 +130,7 @@
 
             <li class="nav-item has-treeview">
               <a href="{{ route('landlord.history') }}" class="nav-link {{ Request::is('landlord/booking/history') ? 'active' : '' }}">
-                <i class="fas fa-user"></i>
+                <i class="fas fa-history"></i>
                 <p class="pl-2">
                   Booking History
                 </p>
@@ -168,7 +168,7 @@
 
           <li class="nav-item has-treeview">
             <a href="{{ route('renter.booking.history') }}" class="nav-link {{ Request::is('renter/booking/history') ? 'active' : '' }}">
-              <i class="fas fa-border-style"></i>
+              <i class="fas fa-history"></i>
               <p class="pl-2">
                 History
                
@@ -178,7 +178,7 @@
 
           <li class="nav-item has-treeview">
             <a href="{{ route('renter.booking.pending') }}" class="nav-link {{ Request::is('renter/pending/booking') ? 'active' : '' }}">
-              <i class="fas fa-border-style"></i>
+              <i class="fas fa-chalkboard"></i>
               <p class="pl-2">
                 Pending Booking
               </p>
