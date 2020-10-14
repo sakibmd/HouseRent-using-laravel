@@ -75,7 +75,7 @@
                    <div class="row">
                         @forelse ($houses as $house)
                             <div class="col-md-6">
-                                <div class="card m-3">
+                                <div class="card m-3 house-card">
                                     <div class="card-header">
                                         <img  src="{{ asset('storage/featured_house/'. $house->featured_image) }}" width="100%" class="img-fluid" alt="Card image">
                                     </div>
@@ -131,9 +131,9 @@
 
                     <ul class="list-group sort">
                         <li class="list-group-item bg-dark text-light"><strong>Sort By Price</strong></li>
-                        <li class="list-group-item"><a href="{{ route('highToLow') }}">High to low</a></li>
-                        <li class="list-group-item"><a href="{{ route('lowToHigh') }}">Low to High</a></li>
-                        <li class="list-group-item"><a href="{{ route('welcome') }}">Normal Order</a></li>
+                        <li class="list-group-item order"><a href="{{ route('highToLow') }}">High to low</a></li>
+                        <li class="list-group-item order"><a href="{{ route('lowToHigh') }}">Low to High</a></li>
+                        <li class="list-group-item order"><a href="{{ route('welcome') }}">Normal Order</a></li>
                     </ul>
 
 
@@ -141,7 +141,7 @@
                     <ul class="list-group area-show">
                         <li class="list-group-item bg-dark text-light"><strong>Areas</strong></li>
                         @forelse ($areas as $area)
-                            <li class="list-group-item">
+                            <li class="list-group-item all-areas">
                                 <a href="{{ route('available.area.house', $area->id) }}" class="area-name">{{ $area->name }} <strong>({{ $area->houses->count() }})</strong></a>
                             </li>
                         @empty  

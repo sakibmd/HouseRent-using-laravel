@@ -74,6 +74,22 @@ h2 .area-wise-not-available{
 	text-align: center;
 }
 
+.area-show .all-areas{
+	background-color: rgb(226, 226, 226);	
+}
+.area-show .all-areas a{
+	font-weight: 600;
+	color: rgb(90, 84, 191);
+}
+
+.sort .order{
+	background-color: rgb(226, 226, 226);	
+}
+.sort .order  a{
+	font-weight: 600;
+	color: rgb(90, 84, 191);
+}
+
 
 
 /* start content section */
@@ -83,6 +99,17 @@ h2 .area-wise-not-available{
 
 #content .sort{
 	margin-bottom: 40px;
+}
+
+#content .card{
+	background-color: rgb(253, 249, 249);
+	transition: .5s;
+}
+
+#content .card:hover{
+	border: 1px solid;
+	box-shadow: 6px 3px 2px #e9e5e5;
+	
 }
 
 #content a{

@@ -13,8 +13,8 @@
             <br>
         </div>
     </div>
-    <div class="container">
-        <div class="row my-5">
+    <div class="container"> 
+        <div class="row my-5" id="content">
             @forelse ($houses as $house)
             <div class="col-md-4">
                 <div class="card m-3">

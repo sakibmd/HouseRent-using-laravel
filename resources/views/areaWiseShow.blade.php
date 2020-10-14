@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="row my-5">
+        <div class="row my-5" id="content">
             @forelse ($houses as $house)
             <div class="col-md-4">
                 <div class="card m-3">
@@ -45,7 +45,7 @@
                 <h2 class="m-auto py-2 text-white bg-dark p-3 area-wise-not-available">House Not Available right now</h2>
             @endforelse
        </div>
-       <a  href="{{ URL::previous() }}" class="btn btn-danger mb-5">Go Back</a>
+       <a  href="{{ route('welcome') }}" class="btn btn-danger mb-5">Go Back</a>
     </div>
 
 
