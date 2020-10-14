@@ -110,8 +110,13 @@ House Rental";
 
 
     public function bookingHistory(){
-        $books = Booking::where('landlord_id', Auth::id())->where('booking_status', '!=', 'requested')->get();
+        $books = Booking::where('landlord_id', Auth::id())->where('booking_status', '!=', 'requested')->where('booking_status', '!=', 'booked')->get();
         return view('landlord.booking.history', compact('books'));
+    }
+
+    public function currentlyStaying(){
+        $books = Booking::where('landlord_id', Auth::id())->where('booking_status', '=', 'booked')->get();
+        return view('landlord.booking.currentRenter', compact('books'));
     }
 
     public function leaveRenter($id){

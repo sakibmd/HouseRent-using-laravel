@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 @section('title')
-    All Booking Request
+    Landlord - All Booked Houses
 @endsection
 @section('content')
 <div class="container">
@@ -10,7 +10,7 @@
 
                 <div class="card my-5 mx-4">
                     <div class="card-header">
-                      <h3 class="card-title float-left"><strong>Booking Requests ({{ $books->count() }})</strong></h3>
+                      <h3 class="card-title float-left"><strong>Booked Houses ({{ $books->count() }})</strong></h3>
                       
                     </div>
                     <!-- /.card-header -->
@@ -22,12 +22,13 @@
                         <tr>
                           <th>Address</th>
                           <th>Entry</th>
+                          <th>Leave</th>
                           <th>Rent</th>
                           <th>Renter Name</th>
                           <th>Renter Contact</th>
                           <th>Renter Nid</th>
                           <th>Renter Email</th>
-                          <th colspan="2">Action</th>
+                          <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -35,6 +36,7 @@
                         <tr>
                           <td>{{ $book->address }}</td>
                           <td>{{ $book->created_at->format('F d, Y') }}</td>
+                          <td>{{ $book->leave }}</td>
                           <td>{{ $book->rent }}</td>
                           <td>{{ $book->renter->name }}</td>
                           <td>{{ $book->renter->contact }}</td>
@@ -42,32 +44,20 @@
                           <td>{{ $book->renter->email }}</td>
                           <td>
                              {{-- start accept form --}}
-                            <button class="btn btn-info btn-sm" type="button" onclick="accept({{ $book->id }})">
-                                Accept
-                            </button>
-              
-                            <form id="accept-form-{{ $book->id }}" action="{{ route('landlord.request.accept', $book->id) }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-
+                             @if($book->booking_status == "booked")
+                                <button class="btn btn-danger btn-sm" type="button" onclick="leave()">
+                                    Leave
+                                </button>
+                
+                                <form id="accept-form" action="{{ route('landlord.leave.renter', $book->id) }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                             @endif
                             {{-- end accept form --}}
-
-                        </td>
-
-                        <td>
-                            {{-- start accept form --}}
-                           <button class="btn btn-danger btn-sm" type="button" onclick="reject({{ $book->id }})">
-                               Reject
-                           </button>
-             
-                           <form id="reject-form-{{ $book->id }}" action="{{ route('landlord.request.reject', $book->id) }}" method="POST" style="display: none;">
-                               @csrf
-                           </form>
-
-                           {{-- end accept form --}}
-
-                       </td>
-                      
+                             
+                          
+                            
+                          </td>
                         </tr>
                         @endforeach    
                         </tbody>
@@ -76,7 +66,7 @@
                       
             </div> <!-- /.card-body -->
               @else 
-                 <h2 class="text-center text-info font-weight-bold m-3">No Booking Request Found</h2>
+                 <h2 class="text-center text-info font-weight-bold m-3">No Booking History Found</h2>
               @endif
 
                <div class="pagination">
@@ -93,7 +83,7 @@
  @section('scripts')
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
  <script>
-     function accept(id){
+     function leave(){
            const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
                 confirmButton: 'btn btn-success',
@@ -103,7 +93,7 @@
             })
             
             swalWithBootstrapButtons.fire({
-                title: 'Are you sure to accept his/her booking?',
+                title: 'Are you sure to leave this renter?',
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes!',
@@ -113,7 +103,7 @@
                 if (result.value) {
                     
                     event.preventDefault();
-                    document.getElementById('accept-form-'+id).submit();
+                    document.getElementById('accept-form').submit();
             
                 } else if (
                 /* Read more about handling dismissals below */
@@ -124,42 +114,7 @@
                 )
                 }
             })
-       }
-
-
-
-        function reject(id){
-           const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: false
-            })
-            
-            swalWithBootstrapButtons.fire({
-                title: 'Are you sure to reject his/her booking?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes!',
-                cancelButtonText: 'No!',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.value) {
-                    
-                    event.preventDefault();
-                    document.getElementById('reject-form-'+id).submit();
-            
-                } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-                ) {
-                swalWithBootstrapButtons.fire(
-                    'Cancelled',
-                )
-                }
-            })
-       }		
+       }	
  </script>
 
 @endsection

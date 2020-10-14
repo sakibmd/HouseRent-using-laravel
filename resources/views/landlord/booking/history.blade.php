@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 @section('title')
-    All Booking History
+    Landlord - All Booking History
 @endsection
 @section('content')
 <div class="container">
@@ -28,7 +28,6 @@
                           <th>Renter Contact</th>
                           <th>Renter Nid</th>
                           <th>Renter Email</th>
-                          <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,22 +41,7 @@
                           <td>{{ $book->renter->contact }}</td>
                           <td>{{ $book->renter->nid }}</td>
                           <td>{{ $book->renter->email }}</td>
-                          <td>
-                             {{-- start accept form --}}
-                             @if($book->booking_status == "booked")
-                                <button class="btn btn-danger" type="button" onclick="leave()">
-                                    Leave
-                                </button>
-                
-                                <form id="accept-form" action="{{ route('landlord.leave.renter', $book->id) }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                             @endif
-                            {{-- end accept form --}}
-                             
                           
-                            
-                          </td>
                         </tr>
                         @endforeach    
                         </tbody>
@@ -81,40 +65,6 @@
  @endsection
 
  @section('scripts')
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
- <script>
-     function leave(){
-           const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: false
-            })
-            
-            swalWithBootstrapButtons.fire({
-                title: 'Are you sure to leave this renter?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes!',
-                cancelButtonText: 'No!',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.value) {
-                    
-                    event.preventDefault();
-                    document.getElementById('accept-form').submit();
-            
-                } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-                ) {
-                swalWithBootstrapButtons.fire(
-                    'Cancelled',
-                )
-                }
-            })
-       }	
- </script>
+
 
 @endsection

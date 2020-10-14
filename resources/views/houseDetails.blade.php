@@ -88,6 +88,12 @@
                                     @endif
                             </td>
                             </tr>
+                            <tr>
+                                <th>Share</th>
+                               <td>
+                                    <div class="addthis_inline_share_toolbox"></div> 
+                               </td>
+                            </tr>
                         </table>
                       </div>
 
@@ -167,6 +173,7 @@
        }
 
 </script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f5fb96836345445"></script> 
 @endsection
 
 

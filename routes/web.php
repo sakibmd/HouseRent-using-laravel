@@ -66,6 +66,7 @@ function(){
 	Route::post('booking-request/accept/{id}','BookingController@bookingRequestAccept')->name('request.accept');
 	Route::post('booking-request/reject/{id}','BookingController@bookingRequestReject')->name('request.reject');
 	Route::get('booking/history','BookingController@bookingHistory')->name('history');
+	Route::get('booked/currently/renter','BookingController@currentlyStaying')->name('currently.staying');
 	Route::post('renter/leave/{id}','BookingController@leaveRenter')->name('leave.renter');
 
 
@@ -85,6 +86,15 @@ function(){
 
 	Route::get('houses', 'DashboardController@allHouses')->name('allHouses');
 	Route::get('house/details/{id}', 'DashboardController@housesDetails')->name('houses.details');
+
+
+	Route::get('profile-info', 'SettingsController@showProfile')->name('profile.show');
+	Route::get('profile-info/edit/{id}', 'SettingsController@editProfile')->name('profile.edit');
+	Route::post('profile-info/update/', 'SettingsController@updateProfile')->name('profile.update');
+
+
+
+
 
 	Route::get('booking/history','DashboardController@bookingHistory')->name('booking.history');
 	Route::get('pending/booking','DashboardController@bookingPending')->name('booking.pending');

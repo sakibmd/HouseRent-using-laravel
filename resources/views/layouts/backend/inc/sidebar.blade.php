@@ -123,7 +123,16 @@
               <a href="{{ route('landlord.bookingRequestList') }}" class="nav-link {{ Request::is('landlord/booking-request-list') ? 'active' : '' }}">
                 <i class="fas fa-chalkboard"></i>
                 <p class="pl-2">
-                  Booking Request
+                  Pending Request
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="{{ route('landlord.currently.staying') }}" class="nav-link {{ Request::is('landlord/booked/currently/renter') ? 'active' : '' }}">
+                <i class="fas fa-store-alt-slash"></i>
+                <p class="pl-2">
+                  Booked Houses
                 </p>
               </a>
             </li>
@@ -154,6 +163,15 @@
             <a href="{{ route('renter.areas') }}" class="nav-link {{ Request::is('renter/areas') ? 'active' : '' }}">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
                   <p class="pl-2">Areas</p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('renter.profile.show') }}" class="nav-link {{ Request::is('renter/profile-info*') ? 'active' : '' }}">
+              <i class="fas fa-user"></i>
+              <p class="pl-2">
+                Profile Info
+              </p>
             </a>
           </li>
 
