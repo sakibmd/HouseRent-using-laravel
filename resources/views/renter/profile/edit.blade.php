@@ -39,7 +39,7 @@
 
                             <div class="form-group">
                                 <label for="contact">Contact: </label>
-                                <input type="text" class="form-control" placeholder="Contact" id="contact" name="contact" value="{{ old('contact', $profile->contact) }}">
+                                <input type="text" class="form-control" placeholder="contact (please add 88 before number)" id="contact" name="contact" value="{{ old('contact', $profile->contact) }}">
                             </div>
 
                             <div class="form-group">
