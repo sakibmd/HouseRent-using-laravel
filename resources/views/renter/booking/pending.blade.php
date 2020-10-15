@@ -37,8 +37,20 @@
                           <td>{{ $book->created_at->format('F d, Y') }}</td>
                           <td>{{ $book->leave }}</td>
                           <td>{{ $book->rent }}</td>
-                          <td>{{ $book->landlord->name }}</td>
-                          <td>{{ $book->landlord->contact }}</td>
+                          <td>
+                            @isset($book->landlord->name)
+                                {{ $book->landlord->name }}
+                            @else 
+                                This landlord is deleted by admin
+                            @endisset
+                          </td>
+                          <td>
+                            @isset($book->landlord->contact)
+                                {{ $book->landlord->contact }}
+                            @else 
+                                This landlord is deleted by admin
+                            @endisset
+                          </td>
                           <td>
                            
                             <button class="btn btn-danger" type="button" onclick="cancel()">

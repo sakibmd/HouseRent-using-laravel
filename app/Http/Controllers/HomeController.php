@@ -54,7 +54,7 @@ class HomeController extends Controller
     }
 
     public function allHouses(){
-        $houses = House::latest()->paginate(12);
+        $houses = House::latest()->where('status', 1)->paginate(12);
         return view('allHouses', compact('houses'));
     }
 
@@ -110,10 +110,20 @@ class HomeController extends Controller
         $house = House::findOrFail($house);
         $landlord = User::where('id', $house->user_id)->first();
 
+        if(Booking::where('address', $house->address)->where('booking_status', "booked")->count() > 0){
+            session()->flash('danger', 'This house has already been booked!');
+            return redirect()->back();
+        }
+
+
+
         if(Booking::where('address', $house->address)->where('renter_id', Auth::id())->where('booking_status', "requested")->count() > 0){
             session()->flash('danger', 'Your have already sent booking request of this home');
             return redirect()->back();
         }
+
+
+       
 
     
         //find current date month year

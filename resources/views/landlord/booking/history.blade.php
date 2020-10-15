@@ -37,10 +37,34 @@
                           <td>{{ $book->created_at->format('F d, Y') }}</td>
                           <td>{{ $book->leave }}</td>
                           <td>{{ $book->rent }}</td>
-                          <td>{{ $book->renter->name }}</td>
-                          <td>{{ $book->renter->contact }}</td>
-                          <td>{{ $book->renter->nid }}</td>
-                          <td>{{ $book->renter->email }}</td>
+                          <td>
+                            @isset($book->renter->name)
+                                {{ $book->renter->name }}
+                            @else 
+                                This renter is deleted by admin
+                            @endisset
+                          </td>
+                          <td>
+                            @isset($book->renter->contact)
+                                {{ $book->renter->contact }}
+                            @else 
+                                This renter is deleted by admin
+                            @endisset
+                          </td>
+                          <td>
+                            @isset($book->renter->nid)
+                                {{ $book->renter->nid }}
+                            @else 
+                                This renter is deleted by admin
+                            @endisset  
+                          </td>
+                          <td>
+                            @isset($book->renter->email)
+                                {{ $book->renter->email }}
+                            @else 
+                                This renter is deleted by admin
+                            @endisset
+                          </td>
                           
                         </tr>
                         @endforeach    

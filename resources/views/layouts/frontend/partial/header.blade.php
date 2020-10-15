@@ -18,9 +18,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div>
-                        {{-- <img src="{{ asset('backend/img/real-estate-estate-agent-property-management-house-realstate.jpg') }}" style="height: 80px; width: 80px" alt="" class="my-2 text-center"> --}}
-                        <strong class="name">House Rental</strong>
-                        <div class="mb-3" style="margin-left: 12px;" id="time"></div>
+                         <img src="{{ asset('frontend/img/logoo.png') }}" style="height: 80px; width: 140px" alt="logo" class="my-2 mx-2 text-center"> 
+                        {{-- <strong class="name">House Rental</strong> --}}
+                        {{-- <div class="mb-3" style="margin-left: 12px;" id="time"></div> --}}
                     </div>
                    
                 </div>

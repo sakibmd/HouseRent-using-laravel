@@ -24,11 +24,41 @@
                           <th>Entry</th>
                           <th>Leave</th>
                           <th>Rent</th>
-                          <th>Renter Name</th>
-                          <th>Landlord Name</th>
-                          <th>Landlord Contact</th>
-                          <th>Landlord Nid</th>
-                          <th>Landlord Email</th>
+                          <td>
+                            @isset($book->renter->name)
+                                {{ $book->renter->name }}
+                            @else 
+                                This renter is deleted by admin
+                            @endisset
+                          </td>
+                          <td>
+                            @isset($book->landlord->name)
+                                {{ $book->landlord->name }}
+                            @else 
+                                This landlord is deleted by admin
+                            @endisset
+                          </td>
+                          <td>
+                            @isset($book->landlord->contact)
+                                {{ $book->landlord->contact }}
+                            @else 
+                                This landlord is deleted by admin
+                            @endisset
+                          </td>
+                          <td>
+                            @isset($book->landlord->nid)
+                                {{ $book->landlord->nid }}
+                            @else 
+                                This landlord is deleted by admin
+                            @endisset  
+                          </td>
+                          <td>
+                            @isset($book->landlord->email)
+                                {{ $book->landlord->email }}
+                            @else 
+                                This landlord is deleted by admin
+                            @endisset
+                          </td>
                           
                         </tr>
                         </thead>
