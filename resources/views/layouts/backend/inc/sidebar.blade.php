@@ -1,5 +1,5 @@
 
-<aside class="main-sidebar sidebar-dark-light elevation-4" style="background-color: #14455F">
+<aside class="main-sidebar sidebar-dark-light elevation-4" style="background-color: #14455F;overflow-y:auto;">
     <!-- Brand Logo -->
     {{-- <a href="" class="brand-link text-center">
       <span class="brand-text font-weight-bold">{{ Auth::user()->role_id == 1 ? 'Admin Panel' : 'User Panel' }}</span>
@@ -10,7 +10,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image text-center">
-          <img src="{{  Auth::user()->image != null ? asset('storage/profile_photo/'. Auth::user()->image) : asset('backend/img/user2-160x160.jpg') }}" style="height: 150px; width: 150px" class="img-circle elevation-2" alt="User Image">
+          <img src="{{  Auth::user()->image != null ? asset('storage/profile_photo/'. Auth::user()->image) : asset('backend/img/user2-160x160.jpg') }}" style="height: 100px; width: 100px" class="img-circle elevation-2" alt="User Image">
           <br>
           <div style="color: honeydew;line-height: 4px; font-weight: 600" class="text-center mt-3 info">
               <p>Name: {{ Auth::user()->name }}</p>
@@ -81,6 +81,26 @@
               </p>
             </a>
           </li>
+
+           <li class="nav-item has-treeview">
+            <a href="{{ route('admin.booked.list') }}" class="nav-link {{ Request::is('admin/booked-houses-list') ? 'active' : '' }}">
+              <i class="fas fa-store-alt-slash"></i>
+              <p class="pl-2">
+                Booked Houses
+              </p>
+            </a>
+          </li>
+
+           <li class="nav-item has-treeview">
+            <a href="{{ route('admin.history.list') }}" class="nav-link {{ Request::is('admin/booked-houses-history') ? 'active' : '' }}">
+              <i class="fas fa-history"></i>
+              <p class="pl-2">
+                Booking History
+              </p>
+            </a>
+          </li>  
+
+
           @endif
 
           @if (Request::is('landlord*'))

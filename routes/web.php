@@ -49,6 +49,10 @@ function(){
 	Route::get('profile-info/edit/{id}', 'SettingsController@editProfile')->name('profile.edit');
 	Route::post('profile-info/update/', 'SettingsController@updateProfile')->name('profile.update');
 
+
+	Route::get('booked-houses-list', 'BookingController@bookedList')->name('booked.list');
+	Route::get('booked-houses-history', 'BookingController@historyList')->name('history.list');
+
 });
 
 
