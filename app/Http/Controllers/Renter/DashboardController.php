@@ -6,6 +6,7 @@ use App\Booking;
 use App\Area;
 use App\House;
 use App\Http\Controllers\Controller;
+use App\Review;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,46 @@ class DashboardController extends Controller
 
     public function housesDetails($id){
         $house = House::find($id);
-        return view('renter.house.show', compact('house')); 
+        $stayOnceUponATime = Booking::
+            where('renter_id', Auth::id())
+            ->where('leave', '!=' ,"null")
+            ->where('leave', '!=', "Currently Staying")
+            ->where('address', $house->address)
+            ->first();
+            //dd($stayOnceUponATime);
+        $alreadyReviewed = Review::where('house_id', $house->id)
+                            ->where('user_id', Auth::id())
+                            ->first();
+
+        return view('renter.house.show', compact('house', 'stayOnceUponATime', 'alreadyReviewed')); 
+    }
+
+    public function review(Request $request){
+        $this->validate($request, [
+            'opinion' => 'required'
+        ]);
+        $review = new Review();
+        $review->house_id = $request->house_id;
+        $review->user_id = Auth::id();
+        $review->opinion = $request->opinion;
+        $review->save();
+        session()->flash('success', 'Review Added Successfully');
+        return redirect()->back();
+    }
+
+    public function reviewEdit($id){
+        $review = Review::find($id);
+        return view('renter.review.edit', compact('review'));
+    }
+
+    public function reviewUpdate(Request $request,$id){
+        $this->validate($request, [
+            'opinion' => 'required|min:10'
+        ]);
+        $review = Review::find($id);
+        $review->opinion = $request->opinion;
+        $review->save();
+        return redirect()->route('renter.houses.details', $review->house_id)->with('success', 'Review Updated Successfully');
     }
 
 

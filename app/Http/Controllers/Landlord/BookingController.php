@@ -35,27 +35,27 @@ class BookingController extends Controller
         $renterName = $book->renter->name;
         $houseAddress = $book->address;
         
-        $url = "http://66.45.237.70/api.php";
-        $number="$renterContact";
-        $text="Hello $renterName,
-Your Booking Request for Address: $houseAddress, has been ACCEPTED.
+//         $url = "http://66.45.237.70/api.php";
+//         $number="$renterContact";
+//         $text="Hello $renterName,
+// Your Booking Request for Address: $houseAddress, has been ACCEPTED.
 
-Regards,
-House Rental";
-        $data= array(
-        'username'=>"01670605075",
-        'password'=>"Cefixime*58#",
-        'number'=>"$number",
-        'message'=>"$text"
-        );
+// Regards,
+// House Rental";
+//         $data= array(
+//         'username'=>"01670605075",
+//         'password'=>"Cefixime*58#",
+//         'number'=>"$number",
+//         'message'=>"$text"
+//         );
 
-        $ch = curl_init(); // Initialize cURL
-        curl_setopt($ch, CURLOPT_URL,$url);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $smsresult = curl_exec($ch);
-        $p = explode("|",$smsresult);
-        $sendstatus = $p[0];
+//         $ch = curl_init(); // Initialize cURL
+//         curl_setopt($ch, CURLOPT_URL,$url);
+//         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+//         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//         $smsresult = curl_exec($ch);
+//         $p = explode("|",$smsresult);
+//         $sendstatus = $p[0];
 
 
 
@@ -76,27 +76,27 @@ House Rental";
         $renterName = $book->renter->name;
         $houseAddress = $book->address;
         
-        $url = "http://66.45.237.70/api.php";
-        $number="$renterContact";
-        $text="Hello $renterName,
-Your Booking Request for Address: $houseAddress, has been REJECTED.
+//         $url = "http://66.45.237.70/api.php";
+//         $number="$renterContact";
+//         $text="Hello $renterName,
+// Your Booking Request for Address: $houseAddress, has been REJECTED.
 
-Regards,
-House Rental";
-        $data= array(
-        'username'=>"01670605075",
-        'password'=>"Cefixime*58#",
-        'number'=>"$number",
-        'message'=>"$text"
-        );
+// Regards,
+// House Rental";
+//         $data= array(
+//         'username'=>"01670605075",
+//         'password'=>"Cefixime*58#",
+//         'number'=>"$number",
+//         'message'=>"$text"
+//         );
 
-        $ch = curl_init(); // Initialize cURL
-        curl_setopt($ch, CURLOPT_URL,$url);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $smsresult = curl_exec($ch);
-        $p = explode("|",$smsresult);
-        $sendstatus = $p[0];
+//         $ch = curl_init(); // Initialize cURL
+//         curl_setopt($ch, CURLOPT_URL,$url);
+//         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+//         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//         $smsresult = curl_exec($ch);
+//         $p = explode("|",$smsresult);
+//         $sendstatus = $p[0];
         
         
         

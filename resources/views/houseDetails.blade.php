@@ -1,7 +1,7 @@
 @extends('layouts.frontend.app')
 
 @section('title','Home')
-    
+
 @section('content')
 
 <div class="container">
@@ -9,31 +9,32 @@
         <div class="col-md-9">
             <div class="card my-5">
                 <div class="card-header">
-                  <div class="d-flex justify-content-between">
-                      <div>
-                          <h3><strong>House Details</strong></h3>
-                          
-                      </div>
-                      <div>
-                          <a class="btn btn-danger" href="{{ route('welcome') }}"> Back</a>
-                          
-                        @guest
-                            <a  href="" onclick="guestBooking()" class="btn btn-info">Apply for booking</a>
-                        @else
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h3><strong>House Details</strong></h3>
+
+                        </div>
+                        <div>
+                            <a class="btn btn-danger" href="{{ route('welcome') }}"> Back</a>
+
+                            @guest
+                            <a href="" onclick="guestBooking()" class="btn btn-info">Apply for booking</a>
+                            @else
 
                             @if (Auth::user()->role_id == 3)
-                                <button class="btn btn-info" type="button" onclick="renterBooking({{ $house->id }})">
-                                    Apply for booking
-                                </button>
-                
-                                <form id="booking-form-{{ $house->id }}" action="{{ route('booking', $house->id) }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
+                            <button class="btn btn-info" type="button" onclick="renterBooking({{ $house->id }})">
+                                Apply for booking
+                            </button>
+
+                            <form id="booking-form-{{ $house->id }}" action="{{ route('booking', $house->id) }}"
+                                method="POST" style="display: none;">
+                                @csrf
+                            </form>
                             @endif
-                        @endguest
-                      </div>
-                  </div>
-              
+                            @endguest
+                        </div>
+                    </div>
+
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -82,37 +83,82 @@
                                 <th>Status</th>
                                 <td>
                                     @if ($house->status == 1)
-                                        <span class="btn btn-success">Available</span>
+                                    <span class="btn btn-success">Available</span>
                                     @else
-                                        <span class="btn btn-danger">Not Available</span>
+                                    <span class="btn btn-danger">Not Available</span>
                                     @endif
-                            </td>
+                                </td>
                             </tr>
                             <tr>
                                 <th>Share</th>
-                               <td>
-                                    <div class="addthis_inline_share_toolbox"></div> 
-                               </td>
+                                <td>
+                                    <div class="addthis_inline_share_toolbox"></div>
+                                </td>
                             </tr>
                         </table>
-                      </div>
+                    </div>
 
-                      <div class="row gallery">
+                    <div class="row gallery">
                         @foreach (json_decode($house->images) as $picture)
-                                   <div class="col-md-3">
-                                       <a href="{{ asset('images/'.$picture) }}">
-                                                   <img  src="{{ asset('images/'.$picture) }}" class="img-fluid m-2" style="height: 150px;width: 100%; ">
-                                       </a>
-                                   </div>
+                        <div class="col-md-3">
+                            <a href="{{ asset('images/'.$picture) }}">
+                                <img src="{{ asset('images/'.$picture) }}" class="img-fluid m-2"
+                                    style="height: 150px;width: 100%; ">
+                            </a>
+                        </div>
                         @endforeach
-                   </div>
+                    </div>
+
+
                 </div>
-               
+
+
+
                 <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
+            </div>
+            <!-- /.card -->
+
+
+
+
+
         </div>
     </div>
+
+
+
+    @if ($house->reviews->count() > 0)
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card my-5">
+                <div class="card-header bg-dark text-white">
+                    <strong>Renter Reviews of this house ({{ $house->reviews->count() }})</strong>
+                </div>
+
+                <div class="card-body">
+                    @foreach ($house->reviews as $review)
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <img class="mr-3"
+                                src="{{ $review->user->image!=null ? asset('storage/profile_photo/'. $review->user->image) : asset('storage/profile_photo/default.png') }}"
+                                width="35" height="35"
+                                style="border-radius: 50%"><strong>{{ $review->user->name }}</strong>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-justify">
+                                {{ $review->opinion }}
+                            </p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
+
+
 </div><!-- /.container -->
 
 @endsection
@@ -124,7 +170,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script>
-   window.addEventListener('load', function() {
+    window.addEventListener('load', function() {
         baguetteBox.run('.gallery', {
             animation: 'fadeIn',
             noScrollbars: true
@@ -173,7 +219,7 @@
        }
 
 </script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f5fb96836345445"></script> 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f5fb96836345445"></script>
 @endsection
 
 
@@ -181,8 +227,3 @@
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
 @endsection
-
-
-
-
-   

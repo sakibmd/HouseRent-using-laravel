@@ -24,6 +24,22 @@
                           <th>Entry</th>
                           <th>Leave</th>
                           <th>Rent</th>
+                          <th>Renter Name</th>
+                          <th>Landlord Name</th>
+                          <th>Landlord Contact</th>
+                          <th>Landlord Nid</th>
+                          <th>Landlord Email</th>
+                          
+                       
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($books as $book)
+                        <tr>
+                          <td>{{ $book->address }}</td>
+                          <td>{{ $book->created_at->format('F d, Y') }}</td>
+                          <td>{{ $book->leave }}</td>
+                          <td>{{ $book->rent }}</td>
                           <td>
                             @isset($book->renter->name)
                                 {{ $book->renter->name }}
@@ -59,21 +75,7 @@
                                 This landlord is deleted by admin
                             @endisset
                           </td>
-                          
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($books as $book)
-                        <tr>
-                          <td>{{ $book->address }}</td>
-                          <td>{{ $book->created_at->format('F d, Y') }}</td>
-                          <td>{{ $book->leave }}</td>
-                          <td>{{ $book->rent }}</td>
-                          <td>{{ $book->renter->name }}</td>
-                          <td>{{ $book->landlord->name }}</td>
-                          <td>{{ $book->landlord->contact }}</td>
-                          <td>{{ $book->landlord->nid }}</td>
-                          <td>{{ $book->landlord->email }}</td>
+                         
                           
                         </tr>
                         @endforeach    

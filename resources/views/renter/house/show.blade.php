@@ -82,6 +82,42 @@
                                         @endif
                                 </td>
                                 </tr>
+
+                                
+
+                                
+                                    @if ($alreadyReviewed != null)
+                                        <tr>
+                                            <th>Your Review</th>
+                                            <td style="text-align: justify">{{ $alreadyReviewed->opinion }}
+                                            <br><a href="{{ route('renter.review.edit', $alreadyReviewed->id) }}" class="btn btn-info btn-sm my-2">Edit</a></td>
+                                            
+                                        </tr>
+                                    @endif
+                                
+
+
+                                @if ($stayOnceUponATime!=null)
+                                    @if ($alreadyReviewed == null)
+                                    <tr>
+                                        <th>
+                                            Enter Review
+                                        </th>
+                                        <td>
+                                            <form action="{{ route('renter.review') }}" method="POST">
+                                                @csrf
+                                                <div class="form group">
+                                                    <textarea class="form-control" name="opinion" cols="30" rows="6" placeholder="enter here..."></textarea>
+                                                </div>
+                                                <input type="hidden" name="house_id" value="{{ $house->id }}">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endif
+                                @endif
+
+                                
                             </table>
                           </div>
 
