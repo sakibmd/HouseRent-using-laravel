@@ -28,6 +28,9 @@ Route::post('/house-booking/id/{id}', 'HomeController@booking')->name('booking')
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
+
+Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
 
 //admin
 

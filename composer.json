@@ -13,6 +13,7 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^6.2",
         "laravel/helpers": "^1.1",
+        "laravel/socialite": "^5.1",
         "laravel/tinker": "^1.0"
     },
     "require-dev": {

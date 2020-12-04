@@ -83,7 +83,7 @@ class AreaController extends Controller
     public function update(Request $request, Area $area)
     {
         $this->validate($request,[
-            'name' => 'required|unique:areas, name,'. $area->id,
+            'name' => 'required|unique:areas,name,'. $area->id ,
         ]);
     
         $area->name = $request->name;
