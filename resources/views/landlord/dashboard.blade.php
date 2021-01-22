@@ -46,7 +46,7 @@
         </div>
         <div class="col-md-3">
             <i class="fa fa-home icon" aria-hidden="true"></i>
-            <h3 class="number">Houses</h3>
+            <h3 class="number">Your Houses</h3>
             <h3 class="number"><span class="counter">{{ $houses->count() }}</span></h3>
         </div>
         <div class="col-md-3">

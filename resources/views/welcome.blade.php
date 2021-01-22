@@ -8,7 +8,7 @@
     <div id="search">
         <div class="container-fluid">
             <div class="row justify-content-center py-4">
-                <h2><strong>Search a house of your choice</strong></h2>
+                <h2 class="text-center"><strong>Search a house of your choice</strong></h2>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-9">
@@ -85,7 +85,7 @@
                                         <p class="grey"><a class="address" href="{{ route('house.details', $house->id) }}"><i class="fas fa-warehouse"> {{ $house->address }}</i></a> </p>
                                         <hr>
                                         <p class="grey"><i class="fas fa-bed"></i> {{ $house->number_of_room }} Bedrooms  <i class="fas fa-bath float-right"> {{ $house->number_of_toilet }} Bathrooms</i> </p>
-                                        <p class="grey"><h4><i class="fas fa-dollar-sign"> {{ $house->rent }}</i></h4> </p>
+                                        <p class="grey"><h4>৳ {{ $house->rent }} BDT</i></h4> </p>
                                     </div>
                                     <div class="card-footer">
                                         <div class="d-flex justify-content-between">
@@ -112,7 +112,7 @@
             </div>
             <div class="col-md-3">
                 <ul class="list-group sort">
-                    <li class="list-group-item bg-dark text-light"><strong>Search By Range</strong></li>
+                    <li class="list-group-item bg-dark text-light sidebar-heading"><strong>Search By Range</strong></li>
                     <form action="{{ route('searchByRange') }}" method="get" class="mt-2">
                         <div class="form-group">
                             <input type="number" class="form-control" required name="digit1" placeholder="enter range (lower value)">
@@ -130,7 +130,7 @@
 
 
                     <ul class="list-group sort">
-                        <li class="list-group-item bg-dark text-light"><strong>Sort By Price</strong></li>
+                        <li class="list-group-item bg-dark text-light sidebar-heading"><strong>Sort By Price</strong></li>
                         <li class="list-group-item order"><a href="{{ route('highToLow') }}">High to low</a></li>
                         <li class="list-group-item order"><a href="{{ route('lowToHigh') }}">Low to High</a></li>
                         <li class="list-group-item order"><a href="{{ route('welcome') }}">Normal Order</a></li>
@@ -139,7 +139,7 @@
 
 
                     <ul class="list-group area-show">
-                        <li class="list-group-item bg-dark text-light"><strong>Areas</strong></li>
+                        <li class="list-group-item bg-dark text-light sidebar-heading"><strong>Areas</strong></li>
                         @forelse ($areas as $area)
                             <li class="list-group-item all-areas">
                                 <a href="{{ route('available.area.house', $area->id) }}" class="area-name">{{ $area->name }} <strong>({{ $area->houses->count() }})</strong></a>
