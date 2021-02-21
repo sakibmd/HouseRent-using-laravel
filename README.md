@@ -1,78 +1,84 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+##  It's a web-based platform where anyone can rent house within a few seconds where Landlords can post about their empty houses.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## **Technology: Html, CSS, Bootstrap, JavaScript, PHP, Laravel Framework
+## **Database: MySQL
 
-## About Laravel
+<ul>
+<h2>Core Features:</h2> 
+    <li><b>Multiauth role (Admin/ Landlord/ Renter)</b></li>
+    <li><b>Booking System</b> (house booking)</li>
+    <li>Google Login using Socialite Package</li>
+    <li><b>SMS</b> System (When booking is confirmed by admin then confirmation sms sends to renter)</li>
+    <li>Social media sharing (available house)</li>
+    <li>Price Filter (search a house using price range)</li>
+    <li>Admin, Landlord, Renter Panel </li>
+    <li><b>Email Verification</b>, Forget Password, Reset Passwrod</li>
+    <li>Landlord and Renter are supervised by admin</li>
+    <li>Booking history</li>
+    <li>Cancel Booking Request</li>
+    <li>Awesome overview show in <b>Dashboard</b></li>
+    <li>Searching System (search by rooms, toilet, rent, area.)</li>
+    <li>Category wise data handling</li>
+    <li><b>Login/Register</b></li>
+    <li>Update profile information</li>
+</ul>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+##  Activities
+<ul>
+<h2>For Admin:</h2>
+<li>See all areas and ability to add new area and edit/delete them</li>
+<li>See all areas created by landlords and ability to delete them.</li>
+<li>Manage all landlords & renter.</li>
+<li> See all the houses information and ability to delete them</li>
+<li>See all booked houses, booking history.</li>
+<li>Admin can change his profile information & reset password</li>
+<li>Admin can share house details through social media</li>
+<li>Sign in/sign out.</li>
+</ul>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<ul>
+<h2>Landlord Panel</h2>
+<li>Sign in/ sign out.</li>
+<li>Landlord can create, edit, delete <b>Area</b> (own created)</li>
+<li>Landlord can view all areas.</li>
+<li>Landlord can add, edit, delete his owm created <b>house</b>. </li>
+<li>Landlord can see his own created houses information.</li>
+<li>Landlord can handle the status of his houses (available or not available)</li>
+<li>Landlord can change his profile information</li>
+<li>Have option to reset his password</li>
+<li>Landlords has ability to approve and reject his pending booking requests.</li>
+<li>Landlord can share house details through social media</li>
+<li>Landlord can manage the status of his booked houses when renter leaves</li>
+<li>Have a nice dashboard where he sees the summary of his activity</li>
+</ul>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+<ul>
+<h2>Renter User</h2>
+<li>Sign in/sign out. </li>
+<li>Renter can view all areas.</li>
+<li>Renter can view all houses information</li>
+<li>Renter can change his profile information.</li>
+<li>Renter can apply booking for rent a house.</li>
+<li>Renter can see his own booking history</li>
+<li>Renter can see his own pending booking requests. </li>
+<li>Renter has ability to cancel his booking request</li>
+<li>Renter can get the booking approval/rejection sms in their cell phones</li>
+<li>Renter can share house details through social media.</li>
+<li>Has ability to reset password</li>
+</ul>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<ul>
+<h2>Guest User</h2>
+<li>User can see all available houses</li>
+<li>User can search houses by location, number of rooms, bathrooms, rent amount, price range</li>
+<li>User can view houses by sorting prices as high to low Or low to high price.</li>
+<li>User can view area wise houses.</li>
+<li>User can share house details through social media.</li>
+</ul>
